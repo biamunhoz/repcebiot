@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fundos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fundos.each do |fundo| %>
+      <tr>
+        <td><%= fundo.nome %></td>
+        <td><%= link_to 'Mostrar', fundo %></td>
+        <td><%= link_to 'Editar', edit_fundo_path(fundo) %></td>
+        <td><%= link_to 'Apagar', fundo, method: :delete, data: { confirm: 'você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Fundo', new_fundo_path %>

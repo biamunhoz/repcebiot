@@ -1,0 +1,2 @@
+class Origem < ApplicationRecord
+end

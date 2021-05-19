@@ -1,0 +1,37 @@
+<%= form_with(model: bioterio, local: true) do |form| %>
+  <% if bioterio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bioterio.errors.count, "error") %> prohibited this bioterio from being saved:</h2>
+
+      <ul>
+      <% bioterio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :local, "Local" %>
+    <%= form.text_field :local %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unidade, "Unidade" %>
+    <%= form.text_field :unidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :idcuica, "Identificador CUICA (ID)" %>
+    <%= form.text_field :idcuica %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origem_id, "Origem" %>
+    <%= form.text_field :origem_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Salvar" %>
+  </div>
+<% end %>

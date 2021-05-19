@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @primer.descricao %>
+</p>
+
+<p>
+  <strong>Protocolopcr:</strong>
+  <%= @primer.protocolopcr %>
+</p>
+
+<p>
+  <strong>Geldeacarose:</strong>
+  <%= @primer.geldeacarose %>
+</p>
+
+<%= link_to 'Edit', edit_primer_path(@primer) %> |
+<%= link_to 'Back', primers_path %>

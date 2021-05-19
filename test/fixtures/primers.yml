@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  protocolopcr: MyString
+  geldeacarose: MyString
+
+two:
+  descricao: MyString
+  protocolopcr: MyString
+  geldeacarose: MyString

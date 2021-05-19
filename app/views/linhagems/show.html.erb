@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @linhagem.nome %>
+</p>
+
+<%= link_to 'Editar', edit_linhagem_path(@linhagem) %> |
+<%= link_to 'Voltar', linhagems_path %>

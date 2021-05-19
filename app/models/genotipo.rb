@@ -1,0 +1,2 @@
+class Genotipo < ApplicationRecord
+end

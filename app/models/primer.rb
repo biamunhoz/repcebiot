@@ -1,0 +1,2 @@
+class Primer < ApplicationRecord
+end

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @fundo.nome %>
+</p>
+
+<%= link_to 'Editar', edit_fundo_path(@fundo) %> |
+<%= link_to 'Voltar', fundos_path %>

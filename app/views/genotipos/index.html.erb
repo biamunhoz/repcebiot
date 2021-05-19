@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Genótipos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genotipos.each do |genotipo| %>
+      <tr>
+        <td><%= genotipo.nome %></td>
+        <td><%= link_to 'Mostrar', genotipo %></td>
+        <td><%= link_to 'Editar', edit_genotipo_path(genotipo) %></td>
+        <td><%= link_to 'Apagar', genotipo, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Genótipo', new_genotipo_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nomeoficial: MyString
+  simbolo: MyString
+  sitereferencia: MyString
+
+two:
+  nomeoficial: MyString
+  simbolo: MyString
+  sitereferencia: MyString

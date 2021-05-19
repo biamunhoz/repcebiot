@@ -1,0 +1,32 @@
+<%= form_with(model: genealvo, local: true) do |form| %>
+  <% if genealvo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(genealvo.errors.count, "error") %> prohibited this genealvo from being saved:</h2>
+
+      <ul>
+      <% genealvo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nomeoficial, "Nome oficial" %>
+    <%= form.text_field :nomeoficial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :simbolo, "Símbolo" %>
+    <%= form.text_field :simbolo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sitereferencia, "Site de referência" %>
+    <%= form.text_field :sitereferencia %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Salvar" %>
+  </div>
+<% end %>

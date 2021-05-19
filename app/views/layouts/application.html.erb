@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Repisitório CEBIOT</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <% if session[:login] != nil %>
+
+    <p>Você está logado com o usuário: <b><%= session[:login] %></b> </p>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+
+        <ul class="nav navbar-nav">
+
+          <!-- submenu -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle lead" data-toggle="dropdown"> Cadastros &nbsp; <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li role="presentation" class="lead"> <%= link_to "Biotérios", bioterios_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Fundos", fundos_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Fenótipos", fenotipos_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Gene alvos", genealvos_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Genótipos", genotipos_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Linhagens", linhagems_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Origens", origems_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Primers", primers_path %></li>
+                <li role="presentation" class="lead"> <%= link_to "Usuários", usuarios_path %></li>
+            </ul>
+          </li>
+
+          <li class="lead"> <%= link_to "Sair" , logout_path %></li>
+      
+        </ul>
+      </div>
+    </nav>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

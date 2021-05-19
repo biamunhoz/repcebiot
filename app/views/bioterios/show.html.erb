@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @bioterio.local %>
+</p>
+
+<p>
+  <strong>Unidade:</strong>
+  <%= @bioterio.unidade %>
+</p>
+
+<p>
+  <strong>ID CUICA:</strong>
+  <%= @bioterio.idcuica %>
+</p>
+
+<p>
+  <strong>Origem:</strong>
+  <%= @bioterio.origem %>
+</p>
+
+<%= link_to 'Editar', edit_bioterio_path(@bioterio) %> |
+<%= link_to 'Voltar', bioterios_path %>

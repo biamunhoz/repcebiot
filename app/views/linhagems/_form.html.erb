@@ -1,0 +1,22 @@
+<%= form_with(model: linhagem, local: true) do |form| %>
+  <% if linhagem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(linhagem.errors.count, "error") %> prohibited this linhagem from being saved:</h2>
+
+      <ul>
+      <% linhagem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

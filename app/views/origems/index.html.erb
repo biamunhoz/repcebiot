@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Origems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instituicao</th>
+      <th>Sigla</th>
+      <th>Endereco</th>
+      <th>Observacao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @origems.each do |origem| %>
+      <tr>
+        <td><%= origem.instituicao %></td>
+        <td><%= origem.sigla %></td>
+        <td><%= origem.endereco %></td>
+        <td><%= origem.observacao %></td>
+        <td><%= link_to 'Show', origem %></td>
+        <td><%= link_to 'Edit', edit_origem_path(origem) %></td>
+        <td><%= link_to 'Destroy', origem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Origem', new_origem_path %>

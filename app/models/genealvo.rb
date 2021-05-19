@@ -1,0 +1,2 @@
+class Genealvo < ApplicationRecord
+end

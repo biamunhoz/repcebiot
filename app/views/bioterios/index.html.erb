@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Biotérios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Local</th>
+      <th>Unidade</th>
+      <th>Id CUICA</th>
+      <th>Origem</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bioterios.each do |bioterio| %>
+      <tr>
+        <td><%= bioterio.local %></td>
+        <td><%= bioterio.unidade %></td>
+        <td><%= bioterio.idcuica %></td>
+        <td><%= bioterio.origem %></td>
+        <td><%= link_to 'Mostrar', bioterio %></td>
+        <td><%= link_to 'Editar', edit_bioterio_path(bioterio) %></td>
+        <td><%= link_to 'Apagar', bioterio, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Biotério', new_bioterio_path %>

@@ -1,0 +1,22 @@
+<%= form_with(model: genotipo, local: true) do |form| %>
+  <% if genotipo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(genotipo.errors.count, "error") %> prohibited this genotipo from being saved:</h2>
+
+      <ul>
+      <% genotipo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome, "Nome" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Salvar" %>
+  </div>
+<% end %>

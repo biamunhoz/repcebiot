@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Tipo do usuario</th>
+      <th>E-mail principal</th>
+      <th>E-mail alternativo</th>
+      <th>E-mail USP </th>
+      <th>Telefone</th>
+      <th>Ramal</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.nomeUsuario %></td>
+        <td><%= usuario.loginUsuario %></td>
+        <td><%= usuario.tipoUsuario %></td>
+        <td><%= usuario.emailPrincipalUsuario %></td>
+        <td><%= usuario.emailAlternativoUsuario %></td>
+        <td><%= usuario.emailUspUsuario %></td>
+        <td><%= usuario.numeroTelefoneFormatado %></td>
+        <td><%= usuario.ramalUsp %></td>
+        <td><%= link_to 'Mostrar', usuario %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

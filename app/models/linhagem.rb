@@ -1,0 +1,2 @@
+class Linhagem < ApplicationRecord
+end

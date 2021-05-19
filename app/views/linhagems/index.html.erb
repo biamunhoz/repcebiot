@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Linhagens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @linhagems.each do |linhagem| %>
+      <tr>
+        <td><%= linhagem.nome %></td>
+        <td><%= link_to 'Mostrar', linhagem %></td>
+        <td><%= link_to 'Editar', edit_linhagem_path(linhagem) %></td>
+        <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Linhagem', new_linhagem_path %>

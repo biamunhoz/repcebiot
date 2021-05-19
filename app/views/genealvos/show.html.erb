@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome oficial:</strong>
+  <%= @genealvo.nomeoficial %>
+</p>
+
+<p>
+  <strong>Símbolo:</strong>
+  <%= @genealvo.simbolo %>
+</p>
+
+<p>
+  <strong>Site de referência:</strong>
+  <%= @genealvo.sitereferencia %>
+</p>
+
+<%= link_to 'Editar', edit_genealvo_path(@genealvo) %> |
+<%= link_to 'Voltar', genealvos_path %>

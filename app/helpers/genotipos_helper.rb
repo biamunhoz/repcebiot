@@ -1,0 +1,2 @@
+module GenotiposHelper
+end

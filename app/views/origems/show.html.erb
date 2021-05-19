@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instituicao:</strong>
+  <%= @origem.instituicao %>
+</p>
+
+<p>
+  <strong>Sigla:</strong>
+  <%= @origem.sigla %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @origem.endereco %>
+</p>
+
+<p>
+  <strong>Observacao:</strong>
+  <%= @origem.observacao %>
+</p>
+
+<%= link_to 'Edit', edit_origem_path(@origem) %> |
+<%= link_to 'Back', origems_path %>
