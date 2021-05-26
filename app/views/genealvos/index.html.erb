@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Gene alvos</h1>
+<h1>Gene alvo</h1>
 
 <table>
   <thead>
@@ -8,6 +8,7 @@
       <th>Nome oficial</th>
       <th>Símbolo</th>
       <th>Site de referência</th>
+      <th>Gene secundário</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= genealvo.nomeoficial %></td>
         <td><%= genealvo.simbolo %></td>
         <td><%= genealvo.sitereferencia %></td>
+        <td><%= link_to 'Gene secundário', genesecundarios_path(:idalvo => genealvo.id), class: "btn btn-default" %></td>
         <td><%= link_to 'Mostrar', genealvo %></td>
         <td><%= link_to 'Editar', edit_genealvo_path(genealvo) %></td>
         <td><%= link_to 'Apagar', genealvo, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Novo Gene alvo', new_genealvo_path %>
+<%= link_to 'Novo Gene Alvo', new_genealvo_path %>

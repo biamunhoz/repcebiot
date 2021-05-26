@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gene principal:</strong>
+  <%= @genesecundario.genealvo.simbolo %>
+</p>
+
+<p>
+  <strong>Gene associado:</strong>
+  <%= @genesecundario.geneassociado.simbolo %>
+</p>
+
+<%= link_to 'Voltar', genesecundarios_path(:idalvo => @genesecundario.genealvo_id)  %>

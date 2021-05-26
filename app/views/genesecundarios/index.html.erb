@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Genes secundários</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gene principal</th>
+      <th>Gene associado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @genesecundarios.each do |genesecundario| %>
+      <tr>
+        <td><%= genesecundario.genealvo.simbolo %></td>
+        <td><%= genesecundario.geneassociado.simbolo%></td>
+        <td><%= link_to 'Mostrar', genesecundario %></td>
+        <td><%= link_to 'Editar', edit_genesecundario_path(genesecundario) %></td>
+        <td><%= link_to 'Apagar', genesecundario, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Gene secundário', new_genesecundario_path(:idalvo => params[:idalvo]), class: "btn btn-success"  %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_171837) do
+ActiveRecord::Schema.define(version: 2021_05_26_133327) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2021_05_13_171837) do
     t.string "sitereferencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "genesecundarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "genealvo_id"
+    t.bigint "geneassociado_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genealvo_id"], name: "index_genesecundarios_on_genealvo_id"
+    t.index ["geneassociado_id"], name: "index_genesecundarios_on_geneassociado_id"
   end
 
   create_table "genotipos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -101,5 +110,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_171837) do
   end
 
   add_foreign_key "bioterios", "origems"
+  add_foreign_key "genesecundarios", "genealvos"
+  add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
   add_foreign_key "tipo_vinculos", "usuarios"
 end

@@ -1,0 +1,28 @@
+<%= form_with(model: genesecundario, local: true) do |form| %>
+  <% if genesecundario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(genesecundario.errors.count, "error") %> prohibited this genesecundario from being saved:</h2>
+
+      <ul>
+      <% genesecundario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if params[:idalvo].nil? %>
+    <%= form.hidden_field :genealvo_id %>
+  <% else  %>
+    <%= form.hidden_field :genealvo_id, :value => params[:idalvo]  %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :geneassociado_id, "Gene para associar" %> 
+    <%= form.select("geneassociado_id", Genealvo.where.not(id: params[:idalvo]).collect {|g| [g.simbolo, g.id]}) %>  
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Salvar" %>
+  </div>
+<% end %>
