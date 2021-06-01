@@ -64,6 +64,6 @@ class BioteriosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bioterio_params
-      params.require(:bioterio).permit(:local, :unidade, :idcuica, :origem_id)
+      params.require(:bioterio).permit(:local, :unidade, :idcuica, :nivelsanitario, :mta, :responsavel, :telcontato, :emailcontato)
     end
 end

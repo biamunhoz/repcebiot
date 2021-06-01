@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_133327) do
+ActiveRecord::Schema.define(version: 2021_06_01_142505) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
     t.string "unidade"
     t.string "idcuica"
-    t.bigint "origem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["origem_id"], name: "index_bioterios_on_origem_id"
+    t.string "nivelsanitario"
+    t.boolean "mta"
+    t.string "responsavel"
+    t.string "telcontato"
+    t.string "emailcontato"
   end
 
   create_table "fenotipos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -109,7 +112,6 @@ ActiveRecord::Schema.define(version: 2021_05_26_133327) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bioterios", "origems"
   add_foreign_key "genesecundarios", "genealvos"
   add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
   add_foreign_key "tipo_vinculos", "usuarios"

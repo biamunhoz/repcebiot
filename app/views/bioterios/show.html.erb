@@ -16,8 +16,26 @@
 </p>
 
 <p>
-  <strong>Origem:</strong>
-  <%= @bioterio.origem %>
+  <strong>Nível sanitário:</strong>
+  <%= @bioterio.nivelsanitario %>
+</p>
+
+<p>
+  <strong>MTA Necessário:</strong>
+  <%= @bioterio.mta == true ? "Sim" : "Não" %>
+</p>
+
+<p>
+  <strong>Responsável:</strong>
+  <%= @bioterio.responsavel %>
+</p>
+<p>
+  <strong>Telefone de contato:</strong>
+  <%= @bioterio.telcontato %>
+</p>
+<p>
+  <strong>E-mail de contato:</strong>
+  <%= @bioterio.emailcontato %>
 </p>
 
 <%= link_to 'Editar', edit_bioterio_path(@bioterio) %> |
