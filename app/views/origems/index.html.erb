@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Instituicao</th>
+      <th>Instituição</th>
       <th>Sigla</th>
-      <th>Endereco</th>
-      <th>Observacao</th>
+      <th>Endereço</th>
+      <th>Observação</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
         <td><%= origem.sigla %></td>
         <td><%= origem.endereco %></td>
         <td><%= origem.observacao %></td>
-        <td><%= link_to 'Show', origem %></td>
-        <td><%= link_to 'Edit', edit_origem_path(origem) %></td>
-        <td><%= link_to 'Destroy', origem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', origem %></td>
+        <td><%= link_to 'Editar', edit_origem_path(origem) %></td>
+        <td><%= link_to 'Apagar', origem, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Origem', new_origem_path %>
+<%= link_to 'Nova Origem', new_origem_path %>

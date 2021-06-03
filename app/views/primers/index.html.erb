@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Descricao</th>
-      <th>Protocolopcr</th>
-      <th>Geldeacarose</th>
+      <th>Descrição</th>
+      <th>Protocolo PCR</th>
+      <th>Gel de acarose</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= primer.descricao %></td>
         <td><%= primer.protocolopcr %></td>
         <td><%= primer.geldeacarose %></td>
-        <td><%= link_to 'Show', primer %></td>
-        <td><%= link_to 'Edit', edit_primer_path(primer) %></td>
-        <td><%= link_to 'Destroy', primer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', primer %></td>
+        <td><%= link_to 'Editar', edit_primer_path(primer) %></td>
+        <td><%= link_to 'Apagar', primer, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Primer', new_primer_path %>
+<%= link_to 'Novo Primer', new_primer_path %>

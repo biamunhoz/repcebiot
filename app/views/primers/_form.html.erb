@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :descricao %>
+    <%= form.label :descricao, "Descrição" %>
     <%= form.text_field :descricao %>
   </div>
 
   <div class="field">
-    <%= form.label :protocolopcr %>
+    <%= form.label :protocolopcr, "Protocolo PCR " %>
     <%= form.text_field :protocolopcr %>
   </div>
 
   <div class="field">
-    <%= form.label :geldeacarose %>
+    <%= form.label :geldeacarose, "Gel de acarose" %>
     <%= form.text_field :geldeacarose %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salvar" %>
   </div>
 <% end %>

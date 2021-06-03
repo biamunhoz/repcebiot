@@ -51,7 +51,7 @@ class GenotiposController < ApplicationController
   def destroy
     @genotipo.destroy
     respond_to do |format|
-      format.html { redirect_to genotipos_url, notice: "Genotipo foi apagado com sucesso." }
+      format.html { redirect_to genotipos_url, notice: "Genótipo foi apagado com sucesso." }
       format.json { head :no_content }
     end
   end
