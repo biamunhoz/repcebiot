@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Repositório</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th>Gene alvo</th>
+      <th>Genótipo</th>
+      <th>Origem</th>
+      <th>Fenótipo</th>
+      <th>Início da coluna USP (ano)</th>
+      <th>Método do acasalamento</th>
+      <th>Referência de construção/uso (link)</th>
+      <th>Nível de seguranca</th>
+      <th>CQB</th>
+      <th>Bioterio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @repositorios.each do |repositorio| %>
+      <tr>
+
+        <td><%= repositorio.genealvo.nomeoficial %></td>
+        <td><%= repositorio.genotipo.nome %></td>
+        <td><%= repositorio.origem.full_origem %></td>
+        <td><%= repositorio.fenotipo.nome %></td>
+        <td><%= repositorio.anoiniciocolonia %></td>
+        <td><%= repositorio.metodoacasalamento %></td>
+        <td><%= repositorio.linkrefconstr %></td>
+        <td><%= repositorio.nivelseguranca %></td>
+        <td><%= repositorio.cqb %></td>
+        <td><%= repositorio.bioterio.full_bioterio %></td>
+        <td><%= link_to 'Mostrar', repositorio %></td>
+        <td><%= link_to 'Editar', edit_repositorio_path(repositorio) %></td>
+        <td><%= link_to 'Apagar', repositorio, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Repositório', new_repositorio_path %>

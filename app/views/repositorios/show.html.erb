@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Início da coluna USP (ano):</strong>
+  <%= @repositorio.anoiniciocolonia %>
+</p>
+
+<p>
+  <strong>Método do acasalamento:</strong>
+  <%= @repositorio.metodoacasalamento %>
+</p>
+
+<p>
+  <strong>Referência de construção/uso (link):</strong>
+  <%= @repositorio.linkrefconstr %>
+</p>
+
+<p>
+  <strong>Nível de segurança:</strong>
+  <%= @repositorio.nivelseguranca %>
+</p>
+
+<p>
+  <strong>CQB:</strong>
+  <%= @repositorio.cqb %>
+</p>
+
+<p>
+  <strong>Genótipo:</strong>
+  <%= @repositorio.genotipo.nome %>
+</p>
+
+<p>
+  <strong>Biotério:</strong>
+  <%= @repositorio.bioterio.full_bioterio %>
+</p>
+
+<p>
+  <strong>Origem:</strong>
+  <%= @repositorio.origem.full_origem %>
+</p>
+
+<p>
+  <strong>Fenótipo:</strong>
+  <%= @repositorio.fenotipo.nome %>
+</p>
+
+<p>
+  <strong>Gene alvo:</strong>
+  <%= @repositorio.genealvo.nomeoficial %>
+</p>
+
+<%= link_to 'Editar', edit_repositorio_path(@repositorio) %> |
+<%= link_to 'Voltar', repositorios_path %>

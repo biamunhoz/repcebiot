@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :local, "Local" %>
+    <%= form.label :local, "Nome" %>
     <%= form.text_field :local %>
   </div>
 
@@ -28,10 +28,9 @@
 
   <div class="field">
     <%= form.label :nivelsanitario, "Nível sanitário" %>
-    <%= form.radio_button :nivelsanitario, 'NB1' %> NB1
-    <%= form.radio_button :nivelsanitario, 'NB2' %> NB2
-    <%= form.radio_button :nivelsanitario, 'NB3' %> NB3
-    <%= form.radio_button :nivelsanitario, 'NB4' %> NB4
+    <%= form.radio_button :nivelsanitario, 'Convencional' %> Convencional
+    <%= form.radio_button :nivelsanitario, 'SPF' %> SPF
+
   </div>
 
   <div class="field">

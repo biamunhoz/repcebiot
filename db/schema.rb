@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_142505) do
+ActiveRecord::Schema.define(version: 2021_06_02_145255) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -83,6 +83,26 @@ ActiveRecord::Schema.define(version: 2021_06_01_142505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "repositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "anoiniciocolonia"
+    t.string "metodoacasalamento"
+    t.string "linkrefconstr"
+    t.string "nivelseguranca"
+    t.string "cqb"
+    t.bigint "genotipo_id"
+    t.bigint "bioterio_id"
+    t.bigint "origem_id"
+    t.bigint "fenotipo_id"
+    t.bigint "genealvo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bioterio_id"], name: "index_repositorios_on_bioterio_id"
+    t.index ["fenotipo_id"], name: "index_repositorios_on_fenotipo_id"
+    t.index ["genealvo_id"], name: "index_repositorios_on_genealvo_id"
+    t.index ["genotipo_id"], name: "index_repositorios_on_genotipo_id"
+    t.index ["origem_id"], name: "index_repositorios_on_origem_id"
+  end
+
   create_table "tipo_vinculos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tipoVinculo"
     t.string "codigoSetor"
@@ -114,5 +134,10 @@ ActiveRecord::Schema.define(version: 2021_06_01_142505) do
 
   add_foreign_key "genesecundarios", "genealvos"
   add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
+  add_foreign_key "repositorios", "bioterios"
+  add_foreign_key "repositorios", "fenotipos"
+  add_foreign_key "repositorios", "genealvos"
+  add_foreign_key "repositorios", "genotipos"
+  add_foreign_key "repositorios", "origems"
   add_foreign_key "tipo_vinculos", "usuarios"
 end
