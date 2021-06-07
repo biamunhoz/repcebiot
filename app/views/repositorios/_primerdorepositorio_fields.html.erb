@@ -1,0 +1,6 @@
+
+<div class="field">
+    <%= form.label :primer_id, "Indique o primer do repositório" %>
+    <%= form.select("primer_id", Primer.all.collect {|p| [p.descricao, p.id]}) %> 
+    <%= form.check_box :_destroy  %> Apagar
+</div>

@@ -1,3 +1,4 @@
+
 <%= form_with(model: repositorio, local: true) do |form| %>
   <% if repositorio.errors.any? %>
     <div id="error_explanation">
@@ -63,6 +64,14 @@
     <%= form.label :bioterio_id, "Biotério" %>
     <%= form.select("bioterio_id", Bioterio.all.collect {|g| [g.full_bioterio, g.id]}) %> 
   </div>
+
+
+  <%= form.fields_for :primerdorepositorios do |pr|  %>
+      <%= render 'primerdorepositorio_fields', form:pr %>
+  <% end %>
+  
+  <p><%= link_to_add_association 'Novo primer', form, :primerdorepositorios, form_name: 'form' %> </p>
+
 
   <div class="actions">
     <%= form.submit "Salvar" %>

@@ -62,3 +62,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'oauth'
+
+# campos aninhados (nested)
+gem 'cocoon'
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'

@@ -50,5 +50,31 @@
   <%= @repositorio.genealvo.nomeoficial %>
 </p>
 
+<% if @repositorio.primerdorepositorios.any? %>
+
+    <h3> Primers associados </h3>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center"> Primer </th>
+        <th class="text-center"> Protocolo PCR </th>
+        <th class="text-center"> Gel de acarose </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @repositorio.primerdorepositorios.each do |pr| %>
+          <tr>
+            <td> <%= pr.primer.descricao %> </td>
+            <td> <%= pr.primer.protocolopcr %> </td>
+            <td> <%= pr.primer.geldeacarose %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h3> Não há parecer informado até o momento </h3>
+<% end %>
+
 <%= link_to 'Editar', edit_repositorio_path(@repositorio) %> |
 <%= link_to 'Voltar', repositorios_path %>

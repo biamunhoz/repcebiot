@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repositorio: one
+  primer: one
+
+two:
+  repositorio: two
+  primer: two

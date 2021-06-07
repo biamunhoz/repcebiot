@@ -13,10 +13,14 @@ class RepositoriosController < ApplicationController
   # GET /repositorios/new
   def new
     @repositorio = Repositorio.new
+
+    @repositorio.primerdorepositorios.build if @repositorio.primerdorepositorios.empty?
+
   end
 
   # GET /repositorios/1/edit
   def edit
+    @repositorio.primerdorepositorios.build if @repositorio.primerdorepositorios.empty?
   end
 
   # POST /repositorios or /repositorios.json
@@ -64,6 +68,6 @@ class RepositoriosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def repositorio_params
-      params.require(:repositorio).permit(:anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :fenotipo_id, :genealvo_id)
+      params.require(:repositorio).permit(:anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :fenotipo_id, :genealvo_id, primerdorepositorios_attributes:[:id, :primer_id, :repositorio_id, :_destroy])
     end
 end

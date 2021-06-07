@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_145255) do
+ActiveRecord::Schema.define(version: 2021_06_04_132615) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2021_06_02_145255) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "primerdorepositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "repositorio_id"
+    t.bigint "primer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["primer_id"], name: "index_primerdorepositorios_on_primer_id"
+    t.index ["repositorio_id"], name: "index_primerdorepositorios_on_repositorio_id"
+  end
+
   create_table "primers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "descricao"
     t.string "protocolopcr"
@@ -134,6 +143,8 @@ ActiveRecord::Schema.define(version: 2021_06_02_145255) do
 
   add_foreign_key "genesecundarios", "genealvos"
   add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
+  add_foreign_key "primerdorepositorios", "primers"
+  add_foreign_key "primerdorepositorios", "repositorios"
   add_foreign_key "repositorios", "bioterios"
   add_foreign_key "repositorios", "fenotipos"
   add_foreign_key "repositorios", "genealvos"
