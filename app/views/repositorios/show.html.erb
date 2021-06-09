@@ -73,7 +73,32 @@
       </tbody>
     </table>
 <% else %>
-    <h3> Não há parecer informado até o momento </h3>
+    <h3> Não há primer informado até o momento </h3>
+<% end %>
+
+
+<% if @repositorio.linfundorepositorios.any? %>
+
+    <h3> Linhagem/Fundo associados </h3>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center"> Linhagem </th>
+        <th class="text-center"> Fundo </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @repositorio.linfundorepositorios.each do |lf| %>
+          <tr>
+            <td> <%= lf.linhagem.nome %> </td>
+            <td> <%= lf.fundo.nome %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h3> Não há Linhagem/Fundo informado até o momento </h3>
 <% end %>
 
 <%= link_to 'Editar', edit_repositorio_path(@repositorio) %> |

@@ -8,4 +8,7 @@ class Repositorio < ApplicationRecord
   has_many :primerdorepositorios, inverse_of: :repositorio
   accepts_nested_attributes_for :primerdorepositorios, allow_destroy: true, reject_if: :all_blank
 
+  has_many :linfundorepositorios, inverse_of: :repositorio
+  accepts_nested_attributes_for :linfundorepositorios, allow_destroy: true, reject_if: :all_blank
+
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repositorio: one
+  linhagem: one
+  fundo: one
+
+two:
+  repositorio: two
+  linhagem: two
+  fundo: two

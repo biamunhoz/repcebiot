@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_132615) do
+ActiveRecord::Schema.define(version: 2021_06_09_143846) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 2021_06_04_132615) do
     t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "linfundorepositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "repositorio_id"
+    t.bigint "linhagem_id"
+    t.bigint "fundo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fundo_id"], name: "index_linfundorepositorios_on_fundo_id"
+    t.index ["linhagem_id"], name: "index_linfundorepositorios_on_linhagem_id"
+    t.index ["repositorio_id"], name: "index_linfundorepositorios_on_repositorio_id"
   end
 
   create_table "linhagems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -143,6 +154,9 @@ ActiveRecord::Schema.define(version: 2021_06_04_132615) do
 
   add_foreign_key "genesecundarios", "genealvos"
   add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
+  add_foreign_key "linfundorepositorios", "fundos"
+  add_foreign_key "linfundorepositorios", "linhagems"
+  add_foreign_key "linfundorepositorios", "repositorios"
   add_foreign_key "primerdorepositorios", "primers"
   add_foreign_key "primerdorepositorios", "repositorios"
   add_foreign_key "repositorios", "bioterios"

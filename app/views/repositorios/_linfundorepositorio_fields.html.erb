@@ -1,0 +1,10 @@
+
+<div class="field">
+    <%= form.label :linhagem_id, "Linhagem" %>
+    <%= form.select("linhagem_id", Linhagem.all.collect {|l| [l.nome, l.id]}) %> 
+
+    <%= form.label :fundo_id, "Fundo" %>
+    <%= form.select("fundo_id", Fundo.all.collect {|f| [f.nome, f.id]}) %> 
+
+    <%= form.check_box :_destroy  %> Apagar
+</div>
