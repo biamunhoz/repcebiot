@@ -5,5 +5,5 @@
   <%= @fundo.nome %>
 </p>
 
-<%= link_to 'Editar', edit_fundo_path(@fundo) %> |
-<%= link_to 'Voltar', fundos_path %>
+<%= link_to 'Editar', edit_fundo_path(@fundo), class: 'btn btn-warning' %> |
+<%= link_to 'Voltar', fundos_path, class: 'btn btn-dark active' %>

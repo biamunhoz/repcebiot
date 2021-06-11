@@ -1,6 +1,6 @@
-<h1>Editar Primer</h1>
+<h3>Editar Primer</h1>
 
 <%= render 'form', primer: @primer %>
 
-<%= link_to 'Mostrar', @primer %> |
-<%= link_to 'Voltar', primers_path %>
+<%= link_to 'Mostrar', @primer, class: 'btn btn-info'  %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

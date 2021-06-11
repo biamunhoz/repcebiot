@@ -1,6 +1,6 @@
-<h1>Editar Fundo</h1>
+<h3>Editar Fundo</h1>
 
 <%= render 'form', fundo: @fundo %>
 
-<%= link_to 'Mostrar', @fundo %> |
-<%= link_to 'Voltar', fundos_path %>
+<%= link_to 'Mostrar', @fundo, class: 'btn btn-info'  %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

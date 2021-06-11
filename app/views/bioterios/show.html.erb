@@ -38,5 +38,5 @@
   <%= @bioterio.emailcontato %>
 </p>
 
-<%= link_to 'Editar', edit_bioterio_path(@bioterio) %> |
-<%= link_to 'Voltar', bioterios_path %>
+<%= link_to 'Editar', edit_bioterio_path(@bioterio), class: 'btn btn-warning' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

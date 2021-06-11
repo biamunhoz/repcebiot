@@ -1,6 +1,6 @@
-<h1>Editar Fenótipo</h1>
+<h3>Editar Fenótipo</h1>
 
 <%= render 'form', fenotipo: @fenotipo %>
 
-<%= link_to 'Mostrar', @fenotipo %> |
-<%= link_to 'Voltar', fenotipos_path %>
+<%= link_to 'Mostrar', @fenotipo, class: 'btn btn-info' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

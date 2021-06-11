@@ -5,5 +5,5 @@
   <%= @fenotipo.nome %>
 </p>
 
-<%= link_to 'Editar', edit_fenotipo_path(@fenotipo) %> |
-<%= link_to 'Voltar', fenotipos_path %>
+<%= link_to 'Editar', edit_fenotipo_path(@fenotipo), class: 'btn btn-warning' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active'  %>

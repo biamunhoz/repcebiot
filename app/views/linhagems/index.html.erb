@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Linhagens</h1>
+<h3>Linhagens</h3>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
       <th>Nome</th>
@@ -14,9 +14,9 @@
     <% @linhagems.each do |linhagem| %>
       <tr>
         <td><%= linhagem.nome %></td>
-        <td><%= link_to 'Mostrar', linhagem %></td>
-        <td><%= link_to 'Editar', edit_linhagem_path(linhagem) %></td>
-        <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Mostrar', linhagem, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Nova Linhagem', new_linhagem_path %>
+<%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>

@@ -1,6 +1,6 @@
-<h1>Editar Repositório</h1>
+<h3>Editar Repositório</h1>
 
 <%= render 'form', repositorio: @repositorio %>
 
-<%= link_to 'Mostrar', @repositorio %> |
-<%= link_to 'Voltar', repositorios_path %>
+<%= link_to 'Mostrar', @repositorio, class: 'btn btn-info' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fundos</h1>
+<h3>Fundos</h3>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
       <th>Nome</th>
@@ -14,9 +14,9 @@
     <% @fundos.each do |fundo| %>
       <tr>
         <td><%= fundo.nome %></td>
-        <td><%= link_to 'Mostrar', fundo %></td>
-        <td><%= link_to 'Editar', edit_fundo_path(fundo) %></td>
-        <td><%= link_to 'Apagar', fundo, method: :delete, data: { confirm: 'você tem certeza?' } %></td>
+        <td><%= link_to 'Mostrar', fundo, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_fundo_path(fundo), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Apagar', fundo, method: :delete, data: { confirm: 'você tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Novo Fundo', new_fundo_path %>
+<%= link_to 'Novo Fundo', new_fundo_path, class: 'btn btn-info' %>

@@ -1,6 +1,6 @@
-<h1>Editar Origem</h1>
+<h3>Editar Origem</h1>
 
 <%= render 'form', origem: @origem %>
 
-<%= link_to 'Mostrar', @origem %> |
-<%= link_to 'Voltar', origems_path %>
+<%= link_to 'Mostrar', @origem, class: 'btn btn-info'  %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

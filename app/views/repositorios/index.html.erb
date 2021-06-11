@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Repositório</h1>
+<h3>Repositório</h3>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
 
@@ -34,9 +34,9 @@
         <td><%= repositorio.nivelseguranca %></td>
         <td><%= repositorio.cqb %></td>
         <td><%= repositorio.bioterio.full_bioterio %></td>
-        <td><%= link_to 'Mostrar', repositorio %></td>
-        <td><%= link_to 'Editar', edit_repositorio_path(repositorio) %></td>
-        <td><%= link_to 'Apagar', repositorio, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Mostrar', repositorio, class: 'btn btn-info'  %></td>
+        <td><%= link_to 'Editar', edit_repositorio_path(repositorio), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Apagar', repositorio, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -44,4 +44,4 @@
 
 <br>
 
-<%= link_to 'Novo Repositório', new_repositorio_path %>
+<%= link_to 'Novo Repositório', new_repositorio_path, class: 'btn btn-info'  %>

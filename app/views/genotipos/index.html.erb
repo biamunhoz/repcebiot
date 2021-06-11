@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Genótipos</h1>
+<h3>Genótipos</h3>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
       <th>Nome</th>
@@ -14,9 +14,9 @@
     <% @genotipos.each do |genotipo| %>
       <tr>
         <td><%= genotipo.nome %></td>
-        <td><%= link_to 'Mostrar', genotipo %></td>
-        <td><%= link_to 'Editar', edit_genotipo_path(genotipo) %></td>
-        <td><%= link_to 'Apagar', genotipo, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Mostrar', genotipo, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_genotipo_path(genotipo), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Apagar', genotipo, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Novo Genótipo', new_genotipo_path %>
+<%= link_to 'Novo Genótipo', new_genotipo_path , class: 'btn btn-info'%>

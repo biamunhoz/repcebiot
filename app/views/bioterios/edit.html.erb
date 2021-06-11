@@ -1,6 +1,6 @@
-<h1>Editar Biotério</h1>
+<h3>Editar Biotério</h1>
 
 <%= render 'form', bioterio: @bioterio %>
 
-<%= link_to 'Mostrar', @bioterio %> |
-<%= link_to 'Voltar', bioterios_path %>
+<%= link_to 'Mostrar', @bioterio, class: 'btn btn-info' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

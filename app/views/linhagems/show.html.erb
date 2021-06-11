@@ -5,5 +5,5 @@
   <%= @linhagem.nome %>
 </p>
 
-<%= link_to 'Editar', edit_linhagem_path(@linhagem) %> |
-<%= link_to 'Voltar', linhagems_path %>
+<%= link_to 'Editar', edit_linhagem_path(@linhagem), class: 'btn btn-warning'  %> |
+<%= link_to 'Voltar', linhagems_path, class: 'btn btn-dark active' %>

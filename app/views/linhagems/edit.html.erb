@@ -1,6 +1,6 @@
-<h1>Editar Linhagem</h1>
+<h3>Editar Linhagem</h1>
 
 <%= render 'form', linhagem: @linhagem %>
 
-<%= link_to 'Mostrar', @linhagem %> |
-<%= link_to 'Voltar', linhagems_path %>
+<%= link_to 'Mostrar', @linhagem, class: 'btn btn-info' %> |
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

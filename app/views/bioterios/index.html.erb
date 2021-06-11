@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Biotérios</h1>
+<h3>Biotérios</h3>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
       <th>Local</th>
       <th>Unidade</th>
-      <th>Id CUICA</th>
+      <th>ID CUICA</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= bioterio.local %></td>
         <td><%= bioterio.unidade %></td>
         <td><%= bioterio.idcuica %></td>
-        <td><%= link_to 'Detalhes', bioterio %></td>
-        <td><%= link_to 'Editar', edit_bioterio_path(bioterio) %></td>
-        <td><%= link_to 'Apagar', bioterio, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        <td><%= link_to 'Detalhes', bioterio, class: 'btn btn-info'  %></td>
+        <td><%= link_to 'Editar', edit_bioterio_path(bioterio), class: 'btn btn-warning'  %></td>
+        <td><%= link_to 'Apagar', bioterio, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'Novo Biotério', new_bioterio_path %>
+<%= link_to 'Novo Biotério', new_bioterio_path, class: 'btn btn-info'  %>
