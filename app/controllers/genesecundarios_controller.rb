@@ -1,6 +1,7 @@
 class GenesecundariosController < ApplicationController
   before_action :set_genesecundario, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /genesecundarios or /genesecundarios.json
   def index
     @genesecundarios = Genesecundario.where(genealvo_id:params[:idalvo])

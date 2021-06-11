@@ -1,6 +1,7 @@
 class FundosController < ApplicationController
   before_action :set_fundo, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /fundos or /fundos.json
   def index
     @fundos = Fundo.all

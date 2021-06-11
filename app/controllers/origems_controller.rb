@@ -1,6 +1,7 @@
 class OrigemsController < ApplicationController
   before_action :set_origem, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /origems or /origems.json
   def index
     @origems = Origem.all

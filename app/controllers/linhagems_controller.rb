@@ -1,6 +1,7 @@
 class LinhagemsController < ApplicationController
   before_action :set_linhagem, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /linhagems or /linhagems.json
   def index
     @linhagems = Linhagem.all

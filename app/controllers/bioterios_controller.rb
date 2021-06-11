@@ -1,6 +1,7 @@
 class BioteriosController < ApplicationController
   before_action :set_bioterio, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /bioterios or /bioterios.json
   def index
     @bioterios = Bioterio.all

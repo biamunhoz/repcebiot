@@ -1,6 +1,7 @@
 class PrimersController < ApplicationController
   before_action :set_primer, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /primers or /primers.json
   def index
     @primers = Primer.all

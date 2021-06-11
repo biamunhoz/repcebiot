@@ -1,5 +1,6 @@
-class RepositoriosController < ApplicationController
+class RepositoriosController < ApplicationController  
   before_action :set_repositorio, only: %i[ show edit update destroy ]
+  before_action :autenticado?
 
   # GET /repositorios or /repositorios.json
   def index

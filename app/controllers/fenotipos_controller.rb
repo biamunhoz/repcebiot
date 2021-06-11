@@ -1,6 +1,7 @@
 class FenotiposController < ApplicationController
   before_action :set_fenotipo, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /fenotipos or /fenotipos.json
   def index
     @fenotipos = Fenotipo.all

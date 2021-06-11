@@ -1,6 +1,7 @@
 class GenealvosController < ApplicationController
   before_action :set_genealvo, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /genealvos or /genealvos.json
   def index
     @genealvos = Genealvo.all

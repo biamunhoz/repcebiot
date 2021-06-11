@@ -1,6 +1,7 @@
 class GenotiposController < ApplicationController
   before_action :set_genotipo, only: %i[ show edit update destroy ]
-
+  before_action :autenticado?
+  
   # GET /genotipos or /genotipos.json
   def index
     @genotipos = Genotipo.all

@@ -1,6 +1,7 @@
 class TipoVinculosController < ApplicationController
   before_action :set_tipo_vinculo, only: [:show, :edit, :update, :destroy]
-
+  before_action :autenticado?
+  
   # GET /tipo_vinculos
   # GET /tipo_vinculos.json
   def index
