@@ -5,5 +5,7 @@
   <%= @fenotipo.nome %>
 </p>
 
-<%= link_to 'Editar', edit_fenotipo_path(@fenotipo), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_fenotipo_path(@fenotipo), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', :back, class: 'btn btn-dark active'  %>

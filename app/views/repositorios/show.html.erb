@@ -101,5 +101,7 @@
     <h3> Não há Linhagem/Fundo informado até o momento </h3>
 <% end %>
 
-<%= link_to 'Editar', edit_repositorio_path(@repositorio), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_repositorio_path(@repositorio), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', repositorios_path, class: 'btn btn-dark active' %>

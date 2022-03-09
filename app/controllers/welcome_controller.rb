@@ -44,6 +44,8 @@ class WelcomeController < ApplicationController
 
     log_in loginUsuario
 
+    carregaperfils
+
   end
 
   def gera_consumidor
@@ -114,6 +116,19 @@ class WelcomeController < ApplicationController
 
       tipoVinc.save!
 
+    end
+
+
+    permitido = Permitido.where(:usuario_id => id)
+
+    if permitido.empty?
+      addpermitido = Permitido.new
+      perfilcomum = Perfil.find_by(:tipo => "Comum")
+
+      addpermitido.usuario_id = id
+      addpermitido.perfil_id = perfilcomum.id
+
+      addpermitido.save!
     end
 
     return loginUsuario

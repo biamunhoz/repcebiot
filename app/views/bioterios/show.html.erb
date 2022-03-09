@@ -15,15 +15,15 @@
   <%= @bioterio.idcuica %>
 </p>
 
-<p>
+<!--p>
   <strong>Nível sanitário:</strong>
-  <%= @bioterio.nivelsanitario %>
+  < %= @bioterio.nivelsanitario %>
 </p>
 
 <p>
   <strong>MTA Necessário:</strong>
-  <%= @bioterio.mta == true ? "Sim" : "Não" %>
-</p>
+  < %= @bioterio.mta == true ? "Sim" : "Não" %>
+</p-->
 
 <p>
   <strong>Responsável:</strong>
@@ -38,5 +38,7 @@
   <%= @bioterio.emailcontato %>
 </p>
 
-<%= link_to 'Editar', edit_bioterio_path(@bioterio), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_bioterio_path(@bioterio), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

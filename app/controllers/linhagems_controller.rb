@@ -14,10 +14,15 @@ class LinhagemsController < ApplicationController
   # GET /linhagems/new
   def new
     @linhagem = Linhagem.new
+    @linhagem.linfundos.build if @linhagem.linfundos.empty?
+    @linhagem.linprimers.build if @linhagem.linprimers.empty?
+
   end
 
   # GET /linhagems/1/edit
   def edit
+    @linhagem.linfundos.build if @linhagem.linfundos.empty?
+    @linhagem.linprimers.build if @linhagem.linprimers.empty?
   end
 
   # POST /linhagems or /linhagems.json
@@ -57,6 +62,20 @@ class LinhagemsController < ApplicationController
     end
   end
 
+  def classifica
+
+    set_linhagem
+
+    @linhagem.classificacao = params[:valor]
+
+    @linhagem.save
+
+    respond_to do |format|
+      format.html { redirect_to linhagems_url, notice: "Classificação atualizada."}
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_linhagem
@@ -65,6 +84,6 @@ class LinhagemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def linhagem_params
-      params.require(:linhagem).permit(:nome)
+      params.require(:linhagem).permit(:nome, :anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :fenotipo_id, :genealvo_id, :nivelsanitario, :mta, linfundos_attributes:[:id, :linhagem_id, :fundo_id, :_destroy], linprimers_attributes:[:id, :primer_id, :linhagem_id, :_destroy])
     end
 end

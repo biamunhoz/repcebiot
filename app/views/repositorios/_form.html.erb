@@ -69,14 +69,18 @@
   <%= form.fields_for :primerdorepositorios do |pr|  %>
       <%= render 'primerdorepositorio_fields', form:pr %>
   <% end %>
-  
+<!--
+  <%= form.fields_for :primerdorepositorios do |pr|  %>
+      <%= render 'primerdorepositorio_fields', form:pr %>
+  <% end %>
+-->
   <p><%= link_to_add_association 'Novo primer', form, :primerdorepositorios, form_name: 'form', class: 'btn btn-info' %> </p>
 
   <%= form.fields_for :linfundorepositorios do |lf|  %>
     <%= render 'linfundorepositorio_fields', form:lf %>
   <% end %>
 
-  <p><%= link_to_add_association 'Nova Linhagem/Fundo', form, :linfundorepositorios, form_name: 'form', class: 'btn btn-info' %> </p>
+  <p><%= link_to_add_association 'Nova Linhagem de Fundo', form, :linfundorepositorios, form_name: 'form', class: 'btn btn-info' %> </p>
 
   <div class="actions">
     <%= form.submit "Salvar" %>

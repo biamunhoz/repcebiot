@@ -1,0 +1,15 @@
+
+<p>
+  <strong>Usuario</strong>
+  <%= @permitido.usuario.nomeUsuario %>
+</p>
+
+<p>
+  <strong>Perfil:</strong>
+  <%= @permitido.perfil.tipo %>
+</p>
+
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_permitido_path(@permitido), class: "btn btn-primary active"  %> 
+<% end %>
+<%= link_to 'Voltar', permitidos_path, class: "btn btn-default"  %>

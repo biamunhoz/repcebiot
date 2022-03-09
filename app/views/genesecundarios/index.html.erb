@@ -16,9 +16,11 @@
       <tr>
         <td><%= genesecundario.genealvo.simbolo %></td>
         <td><%= genesecundario.geneassociado.simbolo%></td>
-        <td><%= link_to 'Mostrar', genesecundario, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Editar', edit_genesecundario_path(genesecundario), class: 'btn btn-warning' %></td>
-        <td><%= link_to 'Apagar', genesecundario, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% if session[:perfil] == "Administrador" %>        
+          <td><%= link_to 'Mostrar', genesecundario, class: 'btn btn-info' %></td>
+          <td><%= link_to 'Editar', edit_genesecundario_path(genesecundario), class: 'btn btn-warning' %></td>
+          <td><%= link_to 'Apagar', genesecundario, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,5 +28,6 @@
 
 <br>
 
-<%= link_to 'Novo Gene secundário', new_genesecundario_path(:idalvo => params[:idalvo]), class: "btn btn-success"  %>
-
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Novo Gene secundário', new_genesecundario_path(:idalvo => params[:idalvo]), class: "btn btn-success"  %>
+<% end %>

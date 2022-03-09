@@ -15,8 +15,10 @@
       <tr>
         <td><%= fenotipo.nome %></td>
         <td><%= link_to 'Mostrar', fenotipo, class: 'btn btn-info'  %></td>
-        <td><%= link_to 'Editar', edit_fenotipo_path(fenotipo), class: 'btn btn-warning'  %></td>
-        <td><%= link_to 'Apagar', fenotipo, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% if session[:perfil] == "Administrador" %>
+          <td><%= link_to 'Editar', edit_fenotipo_path(fenotipo), class: 'btn btn-warning'  %></td>
+          <td><%= link_to 'Apagar', fenotipo, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,6 @@
 
 <br>
 
-<%= link_to 'Novo Fenótipo', new_fenotipo_path, class: 'btn btn-info' %>
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Novo Fenótipo', new_fenotipo_path, class: 'btn btn-info' %>
+<% end %>

@@ -4,6 +4,7 @@
   <strong>Nome:</strong>
   <%= @genotipo.nome %>
 </p>
-
-<%= link_to 'Editar', edit_genotipo_path(@genotipo), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_genotipo_path(@genotipo), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', genotipos_path, class: 'btn btn-dark active' %>

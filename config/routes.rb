@@ -19,8 +19,12 @@ Rails.application.routes.draw do
   resources :tipo_vinculos
   resources :usuarios
   resources :genesecundarios
+  resources :permitidos
+  resources :perfils
   
   root 'welcome#login'
+
+  get 'classifica/:id' => 'linhagems#classifica', as: 'classifica'
 
 
 end

@@ -19,8 +19,10 @@
         <td><%= bioterio.unidade %></td>
         <td><%= bioterio.idcuica %></td>
         <td><%= link_to 'Detalhes', bioterio, class: 'btn btn-info'  %></td>
-        <td><%= link_to 'Editar', edit_bioterio_path(bioterio), class: 'btn btn-warning'  %></td>
-        <td><%= link_to 'Apagar', bioterio, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% if session[:perfil] == "Administrador" %>
+          <td><%= link_to 'Editar', edit_bioterio_path(bioterio), class: 'btn btn-warning'  %></td>
+          <td><%= link_to 'Apagar', bioterio, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,6 @@
 
 <br>
 
-<%= link_to 'Novo Biotério', new_bioterio_path, class: 'btn btn-info'  %>
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Novo Biotério', new_bioterio_path, class: 'btn btn-info'  %>
+<% end %>

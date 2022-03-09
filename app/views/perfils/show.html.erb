@@ -1,0 +1,9 @@
+<p>
+  <strong>Tipo:</strong>
+  <%= @perfil.tipo %>
+</p>
+
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_perfil_path(@perfil), class: "btn btn-primary active" %> 
+<% end %>
+<%= link_to 'Voltar', perfils_path, class: "btn btn-default" %>

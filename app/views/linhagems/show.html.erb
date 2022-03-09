@@ -5,5 +5,139 @@
   <%= @linhagem.nome %>
 </p>
 
-<%= link_to 'Editar', edit_linhagem_path(@linhagem), class: 'btn btn-warning'  %> |
+<p>
+  <strong>Início da coluna USP (ano):</strong>
+  <%= @linhagem.anoiniciocolonia %>
+</p>
+
+<p>
+  <strong>Método do acasalamento:</strong>
+  <%= @linhagem.metodoacasalamento %>
+</p>
+
+<p>
+  <strong>Referência de construção/uso (link):</strong>
+  <%= @linhagem.linkrefconstr %>
+</p>
+
+<p>
+  <strong>Nível de segurança:</strong>
+  <%= @linhagem.nivelseguranca %>
+</p>
+
+<p>
+  <strong>CQB:</strong>
+  <%= @linhagem.cqb %>
+</p>
+
+<p>
+  <strong>Genótipo:</strong>
+  <%= @linhagem.genotipo.nome %>
+</p>
+
+<p>
+  <strong>Biotério:</strong>
+  <%= @linhagem.bioterio.full_bioterio %>
+</p>
+
+<p>
+  <strong>Origem:</strong>
+  <%= @linhagem.origem.full_origem %>
+</p>
+
+<p>
+  <strong>Fenótipo:</strong>
+  <%= @linhagem.fenotipo.nome %>
+</p>
+
+<p>
+  <strong>Gene alvo:</strong>
+  <%= @linhagem.genealvo.nomeoficial %>
+</p>
+
+
+<p>
+  <strong>Nível sanitário:</strong>
+  <%= @linhagem.nivelsanitario %>
+</p>
+
+<p>
+  <strong>MTA Necessário:</strong>
+  <%= @linhagem.mta == true ? "Sim" : "Não" %>
+</p>
+
+<p>
+  <strong>Classificação atual: </strong>
+
+  <% if @linhagem.classificacao == "ouro" %>
+    <%= image_tag("ouro.png", border: 0, height: 40, width: 40) %>
+  <% elsif @linhagem.classificacao == "prata" %>
+    <%= image_tag("prata.png", border: 0, height: 40, width: 40) %>
+  <% elsif @linhagem.classificacao == "bronze" %>
+    <%= image_tag("bronze.png", border: 0, height: 40, width: 40) %>
+  <% else %>
+    Sem classificação
+  <% end %>
+</p>
+
+
+<% if @linhagem.linfundos.any? %>
+
+    <h3> Linhagem/Fundo associados </h3>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center"> Fundo </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @linhagem.linfundos.each do |lf| %>
+          <tr>
+            <td> <%= lf.fundo.nome %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h3> Não há Linhagem/Fundo informado até o momento </h3>
+<% end %>
+
+
+<% if @linhagem.linprimers.any? %>
+
+    <h3> Primers associados </h3>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center"> Primer </th>
+        <th class="text-center"> Protocolo PCR </th>
+        <th class="text-center"> Gel de acarose </th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @linhagem.linprimers.each do |pr| %>
+          <tr>
+            <td> <%= pr.primer.descricao %> </td>
+            <td> <%= pr.primer.protocolopcr %> </td>
+            <td> <%= pr.primer.geldeacarose %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h3> Não há primer associado até o momento </h3>
+<% end %>
+
+<p>   <strong>Deseja reclassificar ? </strong>
+  <%= link_to image_tag("ouro.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "ouro" )  %>
+  <%= link_to image_tag("prata.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "prata")  %>
+  <%= link_to image_tag("bronze.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "bronze") %>
+</p>
+
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_linhagem_path(@linhagem), class: 'btn btn-warning'  %> 
+<% end %>
 <%= link_to 'Voltar', linhagems_path, class: 'btn btn-dark active' %>
+

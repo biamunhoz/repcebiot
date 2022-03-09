@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_143846) do
+ActiveRecord::Schema.define(version: 2022_03_03_173638) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2021_06_09_143846) do
     t.string "idcuica"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nivelsanitario"
-    t.boolean "mta"
     t.string "responsavel"
     t.string "telcontato"
     t.string "emailcontato"
@@ -71,10 +69,46 @@ ActiveRecord::Schema.define(version: 2021_06_09_143846) do
     t.index ["repositorio_id"], name: "index_linfundorepositorios_on_repositorio_id"
   end
 
+  create_table "linfundos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "linhagem_id"
+    t.bigint "fundo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fundo_id"], name: "index_linfundos_on_fundo_id"
+    t.index ["linhagem_id"], name: "index_linfundos_on_linhagem_id"
+  end
+
   create_table "linhagems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "anoiniciocolonia"
+    t.string "metodoacasalamento"
+    t.string "linkrefconstr"
+    t.string "nivelseguranca"
+    t.string "cqb"
+    t.bigint "genotipo_id"
+    t.bigint "bioterio_id"
+    t.bigint "origem_id"
+    t.bigint "fenotipo_id"
+    t.bigint "genealvo_id"
+    t.string "nivelsanitario"
+    t.boolean "mta"
+    t.string "classificacao"
+    t.index ["bioterio_id"], name: "index_linhagems_on_bioterio_id"
+    t.index ["fenotipo_id"], name: "index_linhagems_on_fenotipo_id"
+    t.index ["genealvo_id"], name: "index_linhagems_on_genealvo_id"
+    t.index ["genotipo_id"], name: "index_linhagems_on_genotipo_id"
+    t.index ["origem_id"], name: "index_linhagems_on_origem_id"
+  end
+
+  create_table "linprimers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "linhagem_id"
+    t.bigint "primer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["linhagem_id"], name: "index_linprimers_on_linhagem_id"
+    t.index ["primer_id"], name: "index_linprimers_on_primer_id"
   end
 
   create_table "origems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,6 +118,21 @@ ActiveRecord::Schema.define(version: 2021_06_09_143846) do
     t.string "observacao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "perfils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permitidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.bigint "perfil_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["perfil_id"], name: "index_permitidos_on_perfil_id"
+    t.index ["usuario_id"], name: "index_permitidos_on_usuario_id"
   end
 
   create_table "primerdorepositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -157,6 +206,17 @@ ActiveRecord::Schema.define(version: 2021_06_09_143846) do
   add_foreign_key "linfundorepositorios", "fundos"
   add_foreign_key "linfundorepositorios", "linhagems"
   add_foreign_key "linfundorepositorios", "repositorios"
+  add_foreign_key "linfundos", "fundos"
+  add_foreign_key "linfundos", "linhagems"
+  add_foreign_key "linhagems", "bioterios"
+  add_foreign_key "linhagems", "fenotipos"
+  add_foreign_key "linhagems", "genealvos"
+  add_foreign_key "linhagems", "genotipos"
+  add_foreign_key "linhagems", "origems"
+  add_foreign_key "linprimers", "linhagems"
+  add_foreign_key "linprimers", "primers"
+  add_foreign_key "permitidos", "perfils"
+  add_foreign_key "permitidos", "usuarios"
   add_foreign_key "primerdorepositorios", "primers"
   add_foreign_key "primerdorepositorios", "repositorios"
   add_foreign_key "repositorios", "bioterios"

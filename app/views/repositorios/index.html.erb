@@ -35,6 +35,7 @@
         <td><%= repositorio.cqb %></td>
         <td><%= repositorio.bioterio.full_bioterio %></td>
         <td><%= link_to 'Mostrar', repositorio, class: 'btn btn-info'  %></td>
+        <% if session[:perfil] == "Administrador" %>
         <td><%= link_to 'Editar', edit_repositorio_path(repositorio), class: 'btn btn-warning' %></td>
         <td><%= link_to 'Apagar', repositorio, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
@@ -44,4 +45,6 @@
 
 <br>
 
-<%= link_to 'Novo Repositório', new_repositorio_path, class: 'btn btn-info'  %>
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Novo Repositório', new_repositorio_path, class: 'btn btn-info'  %>
+<% end %>

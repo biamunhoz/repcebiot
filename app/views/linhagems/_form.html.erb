@@ -16,6 +16,84 @@
     <%= form.text_field :nome %>
   </div>
 
+   <div class="field">
+    <%= form.label :genealvo_id, "Gene alvo" %>
+    <%= form.select("genealvo_id", Genealvo.all.collect {|g| [g.simbolo, g.id]}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :fenotipo_id, "Fenótipo" %>
+    <%= form.select("fenotipo_id", Fenotipo.all.collect {|f| [f.nome, f.id]}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :genotipo_id, "Genótipo" %>
+    <%= form.select("genotipo_id", Genotipo.all.collect {|g| [g.nome, g.id]}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :origem_id, "Origem" %>
+    <%= form.select("origem_id", Origem.all.collect {|g| [g.full_origem, g.id]}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :anoiniciocolonia, "Início da coluna USP (ano) " %>
+    <%= form.number_field :anoiniciocolonia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :metodoacasalamento, "Método do acasalamento" %>
+    <%= form.text_field :metodoacasalamento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :linkrefconstr, "Referência de construção/uso (link)" %>
+    <%= form.text_field :linkrefconstr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nivelseguranca, "Nível de segurança" %>
+    <%= form.radio_button :nivelseguranca, 'NB1' %> NB1
+    <%= form.radio_button :nivelseguranca, 'NB2' %> NB2
+    <%= form.radio_button :nivelseguranca, 'NB3' %> NB3
+    <%= form.radio_button :nivelseguranca, 'NB4' %> NB4
+  </div>
+
+  <div class="field">
+    <%= form.label :cqb, "CQB" %>
+    <%= form.text_field :cqb %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bioterio_id, "Biotério" %>
+    <%= form.select("bioterio_id", Bioterio.all.collect {|g| [g.full_bioterio, g.id]}) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :nivelsanitario, "Nível sanitário" %>
+    <%= form.radio_button :nivelsanitario, 'Convencional' %> Convencional
+    <%= form.radio_button :nivelsanitario, 'SPF' %> SPF
+
+  </div>
+
+  <div class="field">
+    <%= form.label :mta, "MTA Necessário" %>
+    <%= form.radio_button :mta, true %> Sim
+    <%= form.radio_button :mta, false %> Não
+  </div>
+
+  <%= form.fields_for :linfundos do |lf|  %>
+    <%= render 'linfundo_fields', form:lf %>
+  <% end %>
+
+  <p><%= link_to_add_association 'Nova Linhagem de Fundo', form, :linfundos, form_name: 'form', class: 'btn btn-info' %> </p>
+
+  <%= form.fields_for :linprimers do |lp|  %>
+    <%= render 'linprimer_fields', form:lp %>
+  <% end %>
+
+  <p><%= link_to_add_association 'Novo Primer', form, :linprimers, form_name: 'form', class: 'btn btn-info' %> </p>
+
   <div class="actions">
     <%= form.submit "Salvar" %>
   </div>

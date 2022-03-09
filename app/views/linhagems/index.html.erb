@@ -6,7 +6,10 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th colspan="3"></th>
+      <th>Ranking <th>
+      <th></th>
+      <th></th>
+      <th>Classificar</th>
     </tr>
   </thead>
 
@@ -14,9 +17,25 @@
     <% @linhagems.each do |linhagem| %>
       <tr>
         <td><%= linhagem.nome %></td>
+        <% if linhagem.classificacao == "ouro" %>
+          <td> <%= image_tag("ouro.png", border: 0, height: 40, width: 40) %></td>
+        <% elsif linhagem.classificacao == "prata" %>
+          <td><%= image_tag("prata.png", border: 0, height: 40, width: 40) %></td>
+        <% elsif linhagem.classificacao == "bronze" %>
+          <td><%= image_tag("bronze.png", border: 0, height: 40, width: 40) %></td>
+        <% else %>
+          <td>Sem classificação </td>
+        <% end %>
         <td><%= link_to 'Mostrar', linhagem, class: 'btn btn-info' %></td>
-        <td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
-        <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% if session[:perfil] == "Administrador" %>
+          <td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
+          <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% end %>
+
+        <td><%= link_to image_tag("ouro.png", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "ouro" )  %>
+            <%= link_to image_tag("prata.png", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "prata")  %>
+            <%= link_to image_tag("bronze.png", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "bronze")  %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +43,6 @@
 
 <br>
 
-<%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
+<% end %>

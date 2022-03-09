@@ -20,5 +20,7 @@
   <%= @origem.observacao %>
 </p>
 
-<%= link_to 'Editar', edit_origem_path(@origem), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_origem_path(@origem), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', origems_path, class: 'btn btn-dark active' %>

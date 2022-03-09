@@ -5,5 +5,7 @@
   <%= @fundo.nome %>
 </p>
 
-<%= link_to 'Editar', edit_fundo_path(@fundo), class: 'btn btn-warning' %> |
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Editar', edit_fundo_path(@fundo), class: 'btn btn-warning' %> 
+<% end %>
 <%= link_to 'Voltar', fundos_path, class: 'btn btn-dark active' %>
