@@ -70,11 +70,11 @@
   <strong>Classificação atual: </strong>
 
   <% if @linhagem.classificacao == "ouro" %>
-    <%= image_tag("ouro.png", border: 0, height: 40, width: 40) %>
-  <% elsif @linhagem.classificacao == "prata" %>
-    <%= image_tag("prata.png", border: 0, height: 40, width: 40) %>
-  <% elsif @linhagem.classificacao == "bronze" %>
-    <%= image_tag("bronze.png", border: 0, height: 40, width: 40) %>
+    <%= image_tag("ouro.jpg", border: 0, height: 40, width: 40) %>
+  <% elsif @linhagem.classificacao == "verde" %>
+    <%= image_tag("verde.jpg", border: 0, height: 40, width: 40) %>
+  <% elsif @linhagem.classificacao == "vermelho" %>
+    <%= image_tag("vermelho.jpg", border: 0, height: 40, width: 40) %>
   <% else %>
     Sem classificação
   <% end %>
@@ -131,9 +131,9 @@
 <% end %>
 
 <p>   <strong>Deseja reclassificar ? </strong>
-  <%= link_to image_tag("ouro.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "ouro" )  %>
-  <%= link_to image_tag("prata.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "prata")  %>
-  <%= link_to image_tag("bronze.png", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "bronze") %>
+  <%= link_to image_tag("ouro.jpg", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "ouro" )  %>
+  <%= link_to image_tag("verde.jpg", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "verde")  %>
+  <%= link_to image_tag("vermelho.jpg", border: 0, height: 40, width: 40), classifica_path(@linhagem, :valor => "vermelho") %>
 </p>
 
 <% if session[:perfil] == "Administrador" %>
