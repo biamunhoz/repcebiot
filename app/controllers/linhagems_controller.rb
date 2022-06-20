@@ -84,6 +84,6 @@ class LinhagemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def linhagem_params
-      params.require(:linhagem).permit(:nome, :anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :fenotipo_id, :genealvo_id, :nivelsanitario, :mta, linfundos_attributes:[:id, :linhagem_id, :fundo_id, :_destroy], linprimers_attributes:[:id, :primer_id, :linhagem_id, :_destroy])
+      params.require(:linhagem).permit(:nome, :anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :genealvo_id, :nivelsanitario, :mta, :fenotipo, :especie, linfundos_attributes:[:id, :linhagem_id, :fundo_id, :_destroy], linprimers_attributes:[:id, :primer_id, :linhagem_id, :_destroy])
     end
 end

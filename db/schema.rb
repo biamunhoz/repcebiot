@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_173638) do
+ActiveRecord::Schema.define(version: 2022_06_20_143013) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 2022_03_03_173638) do
     t.string "nivelsanitario"
     t.boolean "mta"
     t.string "classificacao"
+    t.text "fenotipo"
+    t.string "especie"
     t.index ["bioterio_id"], name: "index_linhagems_on_bioterio_id"
     t.index ["fenotipo_id"], name: "index_linhagems_on_fenotipo_id"
     t.index ["genealvo_id"], name: "index_linhagems_on_genealvo_id"
