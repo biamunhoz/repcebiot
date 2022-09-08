@@ -1,3 +1,3 @@
 class Fenotipo < ApplicationRecord
-    has_many :repositorios
+    #has_many :repositorios
 end

@@ -23,7 +23,14 @@
 
   <div class="field">
     <%= form.label :fenotipo_id, "Fenótipo" %>
-    <%= form.select("fenotipo_id", Fenotipo.all.collect {|f| [f.nome, f.id]}) %> 
+    <!-- %= form.select("fenotipo_id", Fenotipo.all.collect {|f| [f.nome, f.id]}) %-->
+    <%= form.text_field :fenotipo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :especie, "Espécie" %>
+    <%= form.radio_button :especie, 'Camundongo' %> Camundongo
+    <%= form.radio_button :especie, 'Rato' %> Rato
   </div>
 
   <div class="field">
@@ -58,6 +65,8 @@
     <%= form.radio_button :nivelseguranca, 'NB3' %> NB3
     <%= form.radio_button :nivelseguranca, 'NB4' %> NB4
   </div>
+
+
 
   <div class="field">
     <%= form.label :cqb, "CQB" %>
