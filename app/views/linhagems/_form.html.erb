@@ -18,7 +18,7 @@
 
    <div class="field">
     <%= form.label :genealvo_id, "Gene alvo" %>
-    <%= form.select("genealvo_id", Genealvo.all.collect {|g| [g.simbolo, g.id]}) %> 
+    <%= form.select("genealvo_id", Genealvo.all.order("nomeoficial").collect {|g| [g.simbolo, g.id]}) %> 
   </div>
 
   <div class="field">
@@ -35,12 +35,12 @@
 
   <div class="field">
     <%= form.label :genotipo_id, "Genótipo" %>
-    <%= form.select("genotipo_id", Genotipo.all.collect {|g| [g.nome, g.id]}) %> 
+    <%= form.select("genotipo_id", Genotipo.all.order("nome").collect {|g| [g.nome, g.id]}) %> 
   </div>
 
   <div class="field">
     <%= form.label :origem_id, "Origem" %>
-    <%= form.select("origem_id", Origem.all.collect {|g| [g.full_origem, g.id]}) %> 
+    <%= form.select("origem_id", Origem.all.order("instituicao").collect {|g| [g.full_origem, g.id]}) %> 
   </div>
 
   <div class="field">
@@ -75,7 +75,7 @@
 
   <div class="field">
     <%= form.label :bioterio_id, "Biotério" %>
-    <%= form.select("bioterio_id", Bioterio.all.collect {|g| [g.full_bioterio, g.id]}) %> 
+    <%= form.select("bioterio_id", Bioterio.all.order("local").collect {|g| [g.full_bioterio, g.id]}) %> 
   </div>
 
   <div class="field">

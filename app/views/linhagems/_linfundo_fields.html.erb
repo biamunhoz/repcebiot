@@ -1,7 +1,7 @@
 
 <div class="field">
     <%= form.label :fundo_id, "Linhagem de Fundo" %>
-    <%= form.select("fundo_id", Fundo.all.collect {|f| [f.nome, f.id]}) %> 
+    <%= form.select("fundo_id", Fundo.all.order("nome").collect {|f| [f.nome, f.id]}) %> 
 
     <%= form.check_box :_destroy  %> Apagar
 </div>

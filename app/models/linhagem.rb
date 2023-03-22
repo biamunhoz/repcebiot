@@ -7,10 +7,10 @@ class Linhagem < ApplicationRecord
     #belongs_to :fenotipo
     belongs_to :genealvo
   
-    has_many :linfundos, inverse_of: :linhagem
+    has_many :linfundos, inverse_of: :linhagem, dependent: :destroy
     accepts_nested_attributes_for :linfundos, allow_destroy: true, reject_if: :all_blank
 
-    has_many :linprimers, inverse_of: :linhagem
+    has_many :linprimers, inverse_of: :linhagem, dependent: :destroy
     accepts_nested_attributes_for :linprimers, allow_destroy: true, reject_if: :all_blank
 
     validates :linfundos, presence: { message: "Por favor, indique ao menos um fundo para esta linhagem." }

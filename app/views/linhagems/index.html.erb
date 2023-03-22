@@ -2,6 +2,13 @@
 
 <h3>Linhagens</h3>
 
+<% if session[:perfil] == "Administrador" %>
+  <%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
+<% end %>
+
+<br>
+<br>
+
 <table class="table table-striped table-bordered table-hover table-condensed">
   <thead>
     <tr>
@@ -40,8 +47,5 @@
   </tbody>
 </table>
 
-<br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
-<% end %>
+
