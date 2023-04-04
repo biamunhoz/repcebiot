@@ -26,5 +26,6 @@ Rails.application.routes.draw do
 
   get 'classifica/:id' => 'linhagems#classifica', as: 'classifica'
 
+  get 'resultindex' => 'linhagems#resultindex', as: 'resultindex'
 
 end

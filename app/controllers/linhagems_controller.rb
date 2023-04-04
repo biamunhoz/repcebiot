@@ -76,6 +76,20 @@ class LinhagemsController < ApplicationController
 
   end
 
+  def resultindex
+
+    sbusca = ""
+
+    if params[:bioterio] == nil
+
+    elsif params[:bioterio] != ""
+      sbusca = " bioterio_id = " + params[:bioterio].to_s
+    end
+
+    @result = Linhagem.where(sbusca).order("id asc")
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_linhagem
