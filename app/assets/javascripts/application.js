@@ -17,6 +17,7 @@
 //= require jquery_ujs
 //= require cocoon
 //= require jquery3
+//= require dataTables/jquery.dataTables
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .

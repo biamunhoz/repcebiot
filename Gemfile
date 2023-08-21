@@ -73,3 +73,7 @@ gem 'jquery-rails'
 gem 'momentjs-rails'
 
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
+# datatablles
+gem 'jquery-datatables-rails' #, git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-ui-rails'

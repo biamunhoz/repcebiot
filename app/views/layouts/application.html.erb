@@ -9,15 +9,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body data-turbolinks = "false" style="margin: 1px;" >
+  <body data-turbolinks = "false">
 
     <header>
     <div id="header-wrap">
-      <h2 align="center"> REPOSITÓRIO - REDE DE BIOTÉRIOS USP </h2>
+      <h2 align="center"> REPOSITÓRIO AnGM /USP - REDE DE BIOTÉRIOS </h2>
     </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black">
 
       <div class="container-fluid">
       <% if session[:login] != nil %>
@@ -47,7 +47,6 @@
             </li>
 
             <li class="navbar-brand mb-0 h4"><%= link_to "Linhagens", linhagems_path %> </li>
-
             <li class="navbar-brand mb-0 h4"><%= link_to "Busca", resultindex_path %> </li>
 
             <li class="navbar-brand mb-0 h4"><%= link_to "Sair " , logout_path %> </li>

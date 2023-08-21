@@ -47,6 +47,9 @@
         <% if session[:perfil] == "Administrador" %>
           <td class="text-center"><%= link_to 'Editar', edit_permitido_path(permitido), class: "btn btn-primary active" %></td>
           <td class="text-center"><%= link_to 'Apagar', permitido, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger active" %></td>
+        <% else %>
+          <td></td>
+          <td></td>
         <% end %>
       </tr>
     <% end %>

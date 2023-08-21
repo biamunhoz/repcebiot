@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   
   root 'welcome#login'
 
+  #root 'fundos#index'
+  
   get 'classifica/:id' => 'linhagems#classifica', as: 'classifica'
-
   get 'resultindex' => 'linhagems#resultindex', as: 'resultindex'
+
 
 end

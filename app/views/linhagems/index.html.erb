@@ -34,12 +34,19 @@
 <br>
 <br>
 
+<p><%= image_tag("ouro.jpg", border: 0, height: 40, width: 40) %> - Classificação Ouro - Completo 
+<%= image_tag("verde.jpg", border: 0, height: 40, width: 40) %> - Classificação Verde - Faltam poucas informações 
+<%= image_tag("vermelho.jpg", border: 0, height: 40, width: 40)  %> - Classificação Vermelho - Faltam muitas informações </p>
+
+<br>
+<br>
+
 <table id="linhagens" class="table table-bordered display">
   <thead>
     <tr>
       <th>Nome</th>
       <th>Biotério</th>
-      <th>Ranking <th>      
+      <th>Ranking <th>
       <th></th>
       <th></th>
       <th>Classificar</th>
@@ -62,17 +69,22 @@
         <% end %>
         <td><%= link_to 'Mostrar', linhagem, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
-          <td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
-          <td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        	<td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
+        	<td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+       	<% else %>
+	      <td></td>
+	      <td></td>         	
         <% end %>
-        <td><%= link_to image_tag("ouro.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "ouro" )  %>
-            <%= link_to image_tag("verde.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "verde")  %>
-            <%= link_to image_tag("vermelho.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "vermelho")  %>
-        </td>
+        <% if session[:perfil] == "Administrador" %>        
+		<td><%= link_to image_tag("ouro.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "ouro" )  %>
+		    <%= link_to image_tag("verde.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "verde")  %>
+		    <%= link_to image_tag("vermelho.jpg", border: 0, height: 40, width: 40), classifica_path(linhagem, :valor => "vermelho")  %>
+		</td>
+	<% else %>
+		<td></td>
+        <% end %>        
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
 

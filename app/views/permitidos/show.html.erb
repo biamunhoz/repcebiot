@@ -12,4 +12,4 @@
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_permitido_path(@permitido), class: "btn btn-primary active"  %> 
 <% end %>
-<%= link_to 'Voltar', permitidos_path, class: "btn btn-default"  %>
+<%= link_to 'Voltar', :back, class: 'btn btn-dark active' %>

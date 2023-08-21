@@ -22,6 +22,7 @@
     });
 </script>
 
+
 <p id="notice"><%= notice %></p>
 
 <h3>Primers</h3>
@@ -48,6 +49,9 @@
         <% if session[:perfil] == "Administrador" %>
           <td><%= link_to 'Editar', edit_primer_path(primer), class: 'btn btn-warning' %></td>
           <td><%= link_to 'Apagar', primer, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+        <% else %>
+	      <td></td>
+	      <td></td>          
         <% end %>
       </tr>
     <% end %>

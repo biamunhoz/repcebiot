@@ -75,7 +75,7 @@
 
   <div class="field">
     <%= form.label :bioterio_id, "Biotério" %>
-    <%= form.select("bioterio_id", Bioterio.all.order("local").collect {|g| [g.full_bioterio, g.id]}) %> 
+    <%= form.select("bioterio_id", Bioterio.all.collect {|g| [g.full_bioterio, g.id]}) %> 
   </div>
 
   <div class="field">

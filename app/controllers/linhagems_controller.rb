@@ -75,7 +75,7 @@ class LinhagemsController < ApplicationController
     end
 
   end
-
+  
   def resultindex
 
     sbusca = ""
