@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Acao:</strong>
+  <%= @log.acao %>
+</p>
+
+<p>
+  <strong>Tela:</strong>
+  <%= @log.tela %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @log.usuario %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

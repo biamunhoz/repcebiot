@@ -26,6 +26,8 @@ class BioteriosController < ApplicationController
 
     respond_to do |format|
       if @bioterio.save
+        addlog("Adicionar Biotério #{@bioterio.id}", "Biotério")
+
         format.html { redirect_to @bioterio, notice: "Biotério foi criado com sucesso." }
         format.json { render :show, status: :created, location: @bioterio }
       else
@@ -39,6 +41,7 @@ class BioteriosController < ApplicationController
   def update
     respond_to do |format|
       if @bioterio.update(bioterio_params)
+        addlog("Atualizar Biotério #{@bioterio.id}", "Biotério")
         format.html { redirect_to @bioterio, notice: "Biotério foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @bioterio }
       else
@@ -51,6 +54,7 @@ class BioteriosController < ApplicationController
   # DELETE /bioterios/1 or /bioterios/1.json
   def destroy
     @bioterio.destroy
+    addlog("Biotério apagado", "Biotério")
     respond_to do |format|
       format.html { redirect_to bioterios_url, notice: "Biotério foi apagado com sucesso." }
       format.json { head :no_content }

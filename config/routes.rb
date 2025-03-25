@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :logs
   resources :repositorios
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -29,5 +30,6 @@ Rails.application.routes.draw do
   get 'classifica/:id' => 'linhagems#classifica', as: 'classifica'
   get 'resultindex' => 'linhagems#resultindex', as: 'resultindex'
 
+  get 'ativalin/:id' => 'linhagems#ativalin', as: 'ativalin'
 
 end

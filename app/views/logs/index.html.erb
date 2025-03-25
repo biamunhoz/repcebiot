@@ -1,0 +1,50 @@
+<script type="text/javascript">
+  $(function() {
+      oTable = $('#logssistema').dataTable({
+          "iDisplayLength": 30,
+          "sPaginationType":"full_numbers",
+          "bJQueryUI":true,
+          "bLengthChange":false,
+          "oLanguage":{
+              "sInfo":                "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+              "sInfoFiltered":        "Filtrado de _MAX_ registros no total",
+              "sZeroRecords":         "Sem resultados",
+              "sInfoEmpty":           "",
+              "sSearch":              "Buscar",
+              "oPaginate": {
+                  "sFirst":           "Primeiro",
+                  "sPrevious":        "Anterior",
+                  "sNext":            "Próximo",
+                  "sLast":            "Ultimo"
+              }
+          }
+      });
+  });
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<h3>Logs</h3>
+
+<table id="logssistema" class="table table-bordered display">
+  <thead>
+    <tr>
+      <th>Ação</th>
+      <th>Tela</th>
+      <th>Usuário</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.acao %></td>
+        <td><%= log.tela %></td>
+        <td><%= log.usuario.nomeUsuario %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

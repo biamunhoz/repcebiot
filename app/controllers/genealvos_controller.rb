@@ -26,6 +26,7 @@ class GenealvosController < ApplicationController
 
     respond_to do |format|
       if @genealvo.save
+        addlog("Adicionar genealvo #{@genealvo.id}", "Gene Alvo")
         format.html { redirect_to @genealvo, notice: "Gene alvo foi criado com sucesso." }
         format.json { render :show, status: :created, location: @genealvo }
       else
@@ -39,6 +40,7 @@ class GenealvosController < ApplicationController
   def update
     respond_to do |format|
       if @genealvo.update(genealvo_params)
+        addlog("Atualizar genealvo #{@genealvo.id}", "Gene Alvo")
         format.html { redirect_to @genealvo, notice: "Gene alvo foi atualizado com sucesso.." }
         format.json { render :show, status: :ok, location: @genealvo }
       else
@@ -50,6 +52,7 @@ class GenealvosController < ApplicationController
 
   # DELETE /genealvos/1 or /genealvos/1.json
   def destroy
+    addlog("Apagado genealvo #{@genealvo.id}", "Gene Alvo")
     @genealvo.destroy
     respond_to do |format|
       format.html { redirect_to genealvos_url, notice: "Gene alvo foi apagado com sucesso." }

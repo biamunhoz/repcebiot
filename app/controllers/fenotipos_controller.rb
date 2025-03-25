@@ -26,6 +26,7 @@ class FenotiposController < ApplicationController
 
     respond_to do |format|
       if @fenotipo.save
+        addlog("Adicionar Fenótipo #{@fenotipo.id}", "Fenótipo")
         format.html { redirect_to @fenotipo, notice: "Fenótipo foi criado com sucesso." }
         format.json { render :show, status: :created, location: @fenotipo }
       else
@@ -39,6 +40,7 @@ class FenotiposController < ApplicationController
   def update
     respond_to do |format|
       if @fenotipo.update(fenotipo_params)
+        addlog("Atualizar Fenótipo #{@fenotipo.id}", "Fenótipo")
         format.html { redirect_to @fenotipo, notice: "Fenótipo foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @fenotipo }
       else
@@ -50,6 +52,9 @@ class FenotiposController < ApplicationController
 
   # DELETE /fenotipos/1 or /fenotipos/1.json
   def destroy
+    
+    addlog("Fenótipo  apagado #{@fenotipo.id}", "Fenótipo")
+
     @fenotipo.destroy
     respond_to do |format|
       format.html { redirect_to fenotipos_url, notice: "Fenótipo foi apagado com sucesso." }

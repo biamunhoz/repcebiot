@@ -26,6 +26,7 @@ class OrigemsController < ApplicationController
 
     respond_to do |format|
       if @origem.save
+        addlog("Adicionar origem #{@origem.id}", "Origem")
         format.html { redirect_to @origem, notice: "Origem foi cadastrado com sucesso." }
         format.json { render :show, status: :created, location: @origem }
       else
@@ -39,6 +40,7 @@ class OrigemsController < ApplicationController
   def update
     respond_to do |format|
       if @origem.update(origem_params)
+        addlog("Atualizar origem #{@origem.id}", "Origem")
         format.html { redirect_to @origem, notice: "Origem foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @origem }
       else
@@ -50,6 +52,7 @@ class OrigemsController < ApplicationController
 
   # DELETE /origems/1 or /origems/1.json
   def destroy
+    addlog("Apagado origem #{@origem.id}", "Origem")
     @origem.destroy
     respond_to do |format|
       format.html { redirect_to origems_url, notice: "Origem foi apagado com sucesso." }

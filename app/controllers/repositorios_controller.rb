@@ -33,6 +33,7 @@ class RepositoriosController < ApplicationController
 
     respond_to do |format|
       if @repositorio.save
+        addlog("Adicionado repositório #{@repositorio.id}", "Repositorio")
         format.html { redirect_to @repositorio, notice: "Repositório foi criado com sucesso. " }
         format.json { render :show, status: :created, location: @repositorio }
       else
@@ -46,6 +47,7 @@ class RepositoriosController < ApplicationController
   def update
     respond_to do |format|
       if @repositorio.update(repositorio_params)
+        addlog("Atualizado repositório #{@repositorio.id}", "Repositorio")
         format.html { redirect_to @repositorio, notice: "Repositório foi atualizado com sucesso. " }
         format.json { render :show, status: :ok, location: @repositorio }
       else
@@ -57,6 +59,7 @@ class RepositoriosController < ApplicationController
 
   # DELETE /repositorios/1 or /repositorios/1.json
   def destroy
+    addlog("Apagado repositório #{@repositorio.id}", "Repositorio")
     @repositorio.destroy
     respond_to do |format|
       format.html { redirect_to repositorios_url, notice: "Repositório foi apagado com sucesso." }

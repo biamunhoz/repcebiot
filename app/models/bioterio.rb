@@ -2,7 +2,7 @@ class Bioterio < ApplicationRecord
     has_many :repositorios
 
 def full_bioterio
-    "#{local} - #{unidade}"
+    "#{local} - #{unidade} - #{responsavel}"
 end
 
 end

@@ -26,6 +26,7 @@ class GenotiposController < ApplicationController
 
     respond_to do |format|
       if @genotipo.save
+        addlog("Adicionado genotipo #{@genotipo.id}", "Genotipo")
         format.html { redirect_to @genotipo, notice: "Genótipo foi cadastrado com sucesso." }
         format.json { render :show, status: :created, location: @genotipo }
       else
@@ -39,6 +40,7 @@ class GenotiposController < ApplicationController
   def update
     respond_to do |format|
       if @genotipo.update(genotipo_params)
+        addlog("Atualizado genotipo #{@genotipo.id}", "Genotipo")
         format.html { redirect_to @genotipo, notice: "Genótipo foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @genotipo }
       else
@@ -50,6 +52,7 @@ class GenotiposController < ApplicationController
 
   # DELETE /genotipos/1 or /genotipos/1.json
   def destroy
+    addlog("Apagado genótipo #{@genotipo.id}", "Genotipo")
     @genotipo.destroy
     respond_to do |format|
       format.html { redirect_to genotipos_url, notice: "Genótipo foi apagado com sucesso." }

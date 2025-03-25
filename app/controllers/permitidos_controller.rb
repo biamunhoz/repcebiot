@@ -29,6 +29,7 @@ class PermitidosController < ApplicationController
 
     respond_to do |format|
       if @permitido.save        
+        addlog("Atualizar permissão #{@permitido.id}", "Permissão")
         format.html { redirect_to @permitido, notice: 'Permissão criada com sucesso.' }
         format.json { render :show, status: :created, location: @permitido }
       else
@@ -43,6 +44,7 @@ class PermitidosController < ApplicationController
   def update
     respond_to do |format|
       if @permitido.update(permitido_params)        
+        addlog("Atualizar permissão #{@permitido.id}", "Permissão")
         if current_user.id == @permitido.usuario_id
           format.html { redirect_to root_path  }
         else
@@ -59,6 +61,7 @@ class PermitidosController < ApplicationController
   # DELETE /permitidos/1
   # DELETE /permitidos/1.json
   def destroy
+    addlog("Apagar permissão #{@permitido.id}", "Permissão")
     @permitido.destroy
     respond_to do |format|
       format.html { redirect_to permitidos_url, notice: 'Permissão apagada com sucesso' }

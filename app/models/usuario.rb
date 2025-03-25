@@ -10,4 +10,6 @@ class Usuario < ApplicationRecord
     has_many :permissaos, :class_name => 'Permissao'
     has_many :salas, :through => :permissaos
 
+    has_many :logs
+
 end

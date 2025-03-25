@@ -1,10 +1,17 @@
 class LinhagemsController < ApplicationController
+
   before_action :set_linhagem, only: %i[ show edit update destroy ]
   before_action :autenticado?
   
   # GET /linhagems or /linhagems.json
   def index
-    @linhagems = Linhagem.all
+    at = params[:atual]
+
+    if at == "ativo"
+      @linhagems = Linhagem.where(habilitado: true)
+    else
+      @linhagems = Linhagem.where(habilitado: false) 
+    end 
   end
 
   # GET /linhagems/1 or /linhagems/1.json
@@ -16,13 +23,12 @@ class LinhagemsController < ApplicationController
     @linhagem = Linhagem.new
     @linhagem.linfundos.build if @linhagem.linfundos.empty?
     @linhagem.linprimers.build if @linhagem.linprimers.empty?
-
   end
 
   # GET /linhagems/1/edit
   def edit
     @linhagem.linfundos.build if @linhagem.linfundos.empty?
-    @linhagem.linprimers.build if @linhagem.linprimers.empty?
+    @linhagem.linprimers.build if @linhagem.linprimers.empty?    
   end
 
   # POST /linhagems or /linhagems.json
@@ -31,6 +37,7 @@ class LinhagemsController < ApplicationController
 
     respond_to do |format|
       if @linhagem.save
+        addlog("Adicionar linhagem #{@linhagem.id}", "Linhagem")
         format.html { redirect_to @linhagem, notice: "Linhagem foi criada com sucesso." }
         format.json { render :show, status: :created, location: @linhagem }
       else
@@ -44,6 +51,7 @@ class LinhagemsController < ApplicationController
   def update
     respond_to do |format|
       if @linhagem.update(linhagem_params)
+        addlog("Editar linhagem #{@linhagem.id}", "Linhagem")
         format.html { redirect_to @linhagem, notice: "Linhagem foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @linhagem }
       else
@@ -55,12 +63,43 @@ class LinhagemsController < ApplicationController
 
   # DELETE /linhagems/1 or /linhagems/1.json
   def destroy
-    @linhagem.destroy
-    respond_to do |format|
-      format.html { redirect_to linhagems_url, notice: "Linhagem foi apagada com sucesso." }
-      format.json { head :no_content }
-    end
+    #@linhagem.destroy
+
+    @linhagem.update(habilitado: false)
+
+    if @linhagem.save
+      addlog("Desabilitada linhagem #{@linhagem.id}", "Linhagem")
+      respond_to do |format|
+        format.html { redirect_to linhagems_url, notice: "Linhagem foi desabilitada para acesso dos usuários com sucesso." }
+        format.json { head :no_content }    
+      end
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @linhagem.errors, status: :unprocessable_entity }
+    end 
+
   end
+
+  def ativalin
+
+    set_linhagem
+
+    @linhagem.update(habilitado: true)
+
+    addlog("Ativar linhagem #{@linhagem.id}", "Linhagem")
+
+    if @linhagem.save
+      respond_to do |format|
+        format.html { redirect_to linhagems_url, notice: "Linhagem foi habilita para acesso dos usuários com sucesso." }
+        format.json { head :no_content }    
+      end
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @linhagem.errors, status: :unprocessable_entity }
+    end 
+
+  end
+
 
   def classifica
 
@@ -70,8 +109,16 @@ class LinhagemsController < ApplicationController
 
     @linhagem.save
 
-    respond_to do |format|
-      format.html { redirect_to linhagems_url, notice: "Classificação atualizada."}
+    addlog("Classificar linhagem #{@linhagem.id}", "Linhagem")
+
+    if @linhagem.save
+      respond_to do |format|
+        format.html { redirect_to linhagems_url(:atual => "ativo") , notice: "Classificação atualizada." }
+        format.json { head :no_content }    
+      end
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @linhagem.errors, status: :unprocessable_entity }
     end
 
   end

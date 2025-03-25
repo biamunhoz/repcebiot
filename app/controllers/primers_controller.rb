@@ -26,6 +26,7 @@ class PrimersController < ApplicationController
 
     respond_to do |format|
       if @primer.save
+        addlog("Adicionado primer #{@primer.id}", "Primer")
         format.html { redirect_to @primer, notice: "Primer foi criado com sucesso." }
         format.json { render :show, status: :created, location: @primer }
       else
@@ -39,6 +40,7 @@ class PrimersController < ApplicationController
   def update
     respond_to do |format|
       if @primer.update(primer_params)
+        addlog("Atualizado primer #{@primer.id}", "Primer")
         format.html { redirect_to @primer, notice: "Primer foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @primer }
       else
@@ -50,6 +52,7 @@ class PrimersController < ApplicationController
 
   # DELETE /primers/1 or /primers/1.json
   def destroy
+    addlog("Apagado primer #{@primer.id}", "Primer")
     @primer.destroy
     respond_to do |format|
       format.html { redirect_to primers_url, notice: "Primer foi apagado com sucesso." }

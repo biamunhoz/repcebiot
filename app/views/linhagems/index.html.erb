@@ -46,6 +46,7 @@
     <tr>
       <th>Nome</th>
       <th>Biotério</th>
+      <th>Ativo/Inativo</th>
       <th>Ranking <th>
       <th></th>
       <th></th>
@@ -58,6 +59,7 @@
       <tr>
         <td><%= linhagem.nome %></td>
         <td><%= linhagem.bioterio.full_bioterio %> </td>
+        <td><%= linhagem.habilitado == true ? "Ativo" : "Inativo" %></td>
         <% if linhagem.classificacao == "ouro" %>
           <td> <%= image_tag("ouro.jpg", border: 0, height: 40, width: 40) %></td>
         <% elsif linhagem.classificacao == "verde" %>
@@ -70,7 +72,16 @@
         <td><%= link_to 'Mostrar', linhagem, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
         	<td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>
-        	<td><%= link_to 'Apagar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+
+          <% if linhagem.habilitado == true %>
+        	  <td><%= link_to 'Desabilitar', linhagem, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger' %></td>
+          <% else %>
+            <% if session[:perfil] == "Administrador" %>  
+              <td><%= link_to 'Habilitar', ativalin_path(linhagem), class: 'btn btn-success' %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+          <% end %>
        	<% else %>
 	      <td></td>
 	      <td></td>         	

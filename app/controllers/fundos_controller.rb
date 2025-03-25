@@ -26,6 +26,7 @@ class FundosController < ApplicationController
 
     respond_to do |format|
       if @fundo.save
+        addlog("Adicionar fundo #{@fundo.id}", "Fundo")
         format.html { redirect_to @fundo, notice: "Fundo foi criado com sucesso." }
         format.json { render :show, status: :created, location: @fundo }
       else
@@ -39,6 +40,7 @@ class FundosController < ApplicationController
   def update
     respond_to do |format|
       if @fundo.update(fundo_params)
+        addlog("Atualizar fundo #{@fundo.id}", "Fundo")
         format.html { redirect_to @fundo, notice: "Fundo foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @fundo }
       else
@@ -50,6 +52,7 @@ class FundosController < ApplicationController
 
   # DELETE /fundos/1 or /fundos/1.json
   def destroy
+    addlog("Apagado fundo #{@fundo.id}", "Fundo")
     @fundo.destroy
     respond_to do |format|
       format.html { redirect_to fundos_url, notice: "Fundo foi apagado com sucesso." }

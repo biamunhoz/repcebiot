@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_143013) do
+ActiveRecord::Schema.define(version: 2024_12_13_182336) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_143013) do
     t.string "classificacao"
     t.text "fenotipo"
     t.string "especie"
+    t.boolean "habilitado", default: true
     t.index ["bioterio_id"], name: "index_linhagems_on_bioterio_id"
     t.index ["fenotipo_id"], name: "index_linhagems_on_fenotipo_id"
     t.index ["genealvo_id"], name: "index_linhagems_on_genealvo_id"
@@ -111,6 +112,25 @@ ActiveRecord::Schema.define(version: 2022_06_20_143013) do
     t.datetime "updated_at", null: false
     t.index ["linhagem_id"], name: "index_linprimers_on_linhagem_id"
     t.index ["primer_id"], name: "index_linprimers_on_primer_id"
+  end
+
+  create_table "locals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nome"
+    t.string "endereco"
+    t.string "cidade"
+    t.string "estado"
+    t.string "cep"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "acao"
+    t.string "tela"
+    t.bigint "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["usuario_id"], name: "index_logs_on_usuario_id"
   end
 
   create_table "origems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -217,6 +237,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_143013) do
   add_foreign_key "linhagems", "origems"
   add_foreign_key "linprimers", "linhagems"
   add_foreign_key "linprimers", "primers"
+  add_foreign_key "logs", "usuarios"
   add_foreign_key "permitidos", "perfils"
   add_foreign_key "permitidos", "usuarios"
   add_foreign_key "primerdorepositorios", "primers"
