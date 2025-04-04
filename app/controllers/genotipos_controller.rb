@@ -23,6 +23,7 @@ class GenotiposController < ApplicationController
   # POST /genotipos or /genotipos.json
   def create
     @genotipo = Genotipo.new(genotipo_params)
+    @genotipo.usuario_id =  current_user.id
 
     respond_to do |format|
       if @genotipo.save
@@ -68,6 +69,6 @@ class GenotiposController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def genotipo_params
-      params.require(:genotipo).permit(:nome)
+      params.require(:genotipo).permit(:nome, :usuario_id)
     end
 end

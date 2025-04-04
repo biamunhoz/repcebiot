@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_12_13_182336) do
+ActiveRecord::Schema.define(version: 2025_03_28_181010) do
 
   create_table "bioterios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "local"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "responsavel"
     t.string "telcontato"
     t.string "emailcontato"
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_bioterios_on_usuario_id"
   end
 
   create_table "fenotipos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -33,6 +35,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_fundos_on_usuario_id"
   end
 
   create_table "genealvos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -41,6 +45,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "sitereferencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_genealvos_on_usuario_id"
   end
 
   create_table "genesecundarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,6 +62,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_genotipos_on_usuario_id"
   end
 
   create_table "linfundorepositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,11 +106,14 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.text "fenotipo"
     t.string "especie"
     t.boolean "habilitado", default: true
+    t.bigint "usuario_id"
+    t.string "status"
     t.index ["bioterio_id"], name: "index_linhagems_on_bioterio_id"
     t.index ["fenotipo_id"], name: "index_linhagems_on_fenotipo_id"
     t.index ["genealvo_id"], name: "index_linhagems_on_genealvo_id"
     t.index ["genotipo_id"], name: "index_linhagems_on_genotipo_id"
     t.index ["origem_id"], name: "index_linhagems_on_origem_id"
+    t.index ["usuario_id"], name: "index_linhagems_on_usuario_id"
   end
 
   create_table "linprimers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -140,6 +151,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "observacao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_origems_on_usuario_id"
   end
 
   create_table "perfils", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -172,6 +185,8 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.string "geldeacarose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id"
+    t.index ["usuario_id"], name: "index_primers_on_usuario_id"
   end
 
   create_table "repositorios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -223,8 +238,12 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bioterios", "usuarios"
+  add_foreign_key "fundos", "usuarios"
+  add_foreign_key "genealvos", "usuarios"
   add_foreign_key "genesecundarios", "genealvos"
   add_foreign_key "genesecundarios", "genealvos", column: "geneassociado_id"
+  add_foreign_key "genotipos", "usuarios"
   add_foreign_key "linfundorepositorios", "fundos"
   add_foreign_key "linfundorepositorios", "linhagems"
   add_foreign_key "linfundorepositorios", "repositorios"
@@ -235,13 +254,16 @@ ActiveRecord::Schema.define(version: 2024_12_13_182336) do
   add_foreign_key "linhagems", "genealvos"
   add_foreign_key "linhagems", "genotipos"
   add_foreign_key "linhagems", "origems"
+  add_foreign_key "linhagems", "usuarios"
   add_foreign_key "linprimers", "linhagems"
   add_foreign_key "linprimers", "primers"
   add_foreign_key "logs", "usuarios"
+  add_foreign_key "origems", "usuarios"
   add_foreign_key "permitidos", "perfils"
   add_foreign_key "permitidos", "usuarios"
   add_foreign_key "primerdorepositorios", "primers"
   add_foreign_key "primerdorepositorios", "repositorios"
+  add_foreign_key "primers", "usuarios"
   add_foreign_key "repositorios", "bioterios"
   add_foreign_key "repositorios", "fenotipos"
   add_foreign_key "repositorios", "genealvos"

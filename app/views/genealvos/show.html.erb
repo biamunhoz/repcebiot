@@ -15,6 +15,11 @@
   <%= @genealvo.sitereferencia %>
 </p>
 
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @genealvo.usuario.nomeUsuario %>
+</p>
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_genealvo_path(@genealvo), class: 'btn btn-warning' %> 
 <% end %>

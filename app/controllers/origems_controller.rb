@@ -23,6 +23,7 @@ class OrigemsController < ApplicationController
   # POST /origems or /origems.json
   def create
     @origem = Origem.new(origem_params)
+    @origem.usuario_id =  current_user.id
 
     respond_to do |format|
       if @origem.save
@@ -68,6 +69,6 @@ class OrigemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def origem_params
-      params.require(:origem).permit(:instituicao, :sigla, :endereco, :observacao)
+      params.require(:origem).permit(:instituicao, :sigla, :endereco, :observacao, :usuario_id)
     end
 end

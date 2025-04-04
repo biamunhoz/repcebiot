@@ -32,6 +32,7 @@
       <th>Local</th>
       <th>Unidade</th>
       <th>ID CUICA</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -44,6 +45,7 @@
         <td><%= bioterio.local %></td>
         <td><%= bioterio.unidade %></td>
         <td><%= bioterio.idcuica %></td>
+        <td><%= bioterio.usuario.nomeUsuario %></td>
         <td><%= link_to 'Detalhes', bioterio, class: 'btn btn-info'  %></td>
         <% if session[:perfil] == "Administrador" %>
           <td><%= link_to 'Editar', edit_bioterio_path(bioterio), class: 'btn btn-warning'  %></td>
@@ -59,6 +61,6 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Novo Biotério', new_bioterio_path, class: 'btn btn-info'  %>
-<% end %>
+
+<%= link_to 'Novo Biotério', new_bioterio_path, class: 'btn btn-info'  %>
+

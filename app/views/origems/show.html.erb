@@ -20,6 +20,11 @@
   <%= @origem.observacao %>
 </p>
 
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @origem.usuario.nomeUsuario %>
+</p>
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_origem_path(@origem), class: 'btn btn-warning' %> 
 <% end %>

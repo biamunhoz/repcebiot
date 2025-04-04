@@ -4,6 +4,13 @@
   <strong>Nome:</strong>
   <%= @genotipo.nome %>
 </p>
+
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @genotipo.usuario.nomeUsuario %>
+</p>
+
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_genotipo_path(@genotipo), class: 'btn btn-warning' %> 
 <% end %>

@@ -33,6 +33,7 @@
       <th>Descrição</th>
       <th>Protocolo PCR</th>
       <th>Gel de aGarose</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -45,6 +46,7 @@
         <td><%= primer.descricao %></td>
         <td><%= primer.protocolopcr %></td>
         <td><%= primer.geldeacarose %></td>
+        <td><%= primer.usuario.nomeUsuario %></td>
         <td><%= link_to 'Mostrar', primer, class: 'btn btn-info'  %></td>
         <% if session[:perfil] == "Administrador" %>
           <td><%= link_to 'Editar', edit_primer_path(primer), class: 'btn btn-warning' %></td>
@@ -60,6 +62,5 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Novo Primer', new_primer_path, class: 'btn btn-info'  %>
-<% end %>
+
+<%= link_to 'Novo Primer', new_primer_path, class: 'btn btn-info'  %>

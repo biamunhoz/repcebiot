@@ -30,6 +30,7 @@
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -40,6 +41,7 @@
     <% @fundos.each do |fundo| %>
       <tr>
         <td><%= fundo.nome %></td>
+        <td><%= fundo.usuario.nomeUsuario %></td>
         <td><%= link_to 'Mostrar', fundo, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
 		<td><%= link_to 'Editar', edit_fundo_path(fundo), class: 'btn btn-warning' %></td>
@@ -55,6 +57,6 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Novo Fundo', new_fundo_path, class: 'btn btn-info' %>
-<% end %>
+
+<%= link_to 'Novo Fundo', new_fundo_path, class: 'btn btn-info' %>
+

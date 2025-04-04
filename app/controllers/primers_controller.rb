@@ -23,6 +23,7 @@ class PrimersController < ApplicationController
   # POST /primers or /primers.json
   def create
     @primer = Primer.new(primer_params)
+    @primer.usuario_id =  current_user.id
 
     respond_to do |format|
       if @primer.save
@@ -68,6 +69,6 @@ class PrimersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def primer_params
-      params.require(:primer).permit(:descricao, :protocolopcr, :geldeacarose)
+      params.require(:primer).permit(:descricao, :protocolopcr, :geldeacarose, :usuario_id)
     end
 end

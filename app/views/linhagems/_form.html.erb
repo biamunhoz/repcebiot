@@ -103,6 +103,15 @@
 
   <p><%= link_to_add_association 'Novo Primer', form, :linprimers, form_name: 'form', class: 'btn btn-info' %> </p>
 
+  <% if session[:perfil] == "Administrador" %>
+    <div class="field">
+      <%= form.label :status, "Status" %>
+      <%= form.radio_button :status, 'Novo' %> Novo
+      <%= form.radio_button :status, 'Aprovado' %> Aprovado pelo administrador
+      <%= form.radio_button :status, 'Recusado' %> Recusado pelo administrador
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit "Salvar" %>
   </div>

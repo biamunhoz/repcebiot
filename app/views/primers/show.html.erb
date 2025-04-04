@@ -15,6 +15,11 @@
   <%= @primer.geldeacarose %>
 </p>
 
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @primer.usuario.nomeUsuario %>
+</p>
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_primer_path(@primer), class: 'btn btn-warning' %> 
 <% end %>

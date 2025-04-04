@@ -6,6 +6,7 @@ class Linhagem < ApplicationRecord
     belongs_to :origem
     #belongs_to :fenotipo
     belongs_to :genealvo
+    belongs_to :usuario
   
     has_many :linfundos, inverse_of: :linhagem, dependent: :destroy
     accepts_nested_attributes_for :linfundos, allow_destroy: true, reject_if: :all_blank

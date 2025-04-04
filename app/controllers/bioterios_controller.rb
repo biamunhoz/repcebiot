@@ -23,6 +23,7 @@ class BioteriosController < ApplicationController
   # POST /bioterios or /bioterios.json
   def create
     @bioterio = Bioterio.new(bioterio_params)
+    @bioterio.usuario_id =  current_user.id
 
     respond_to do |format|
       if @bioterio.save
@@ -69,6 +70,6 @@ class BioteriosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bioterio_params
-      params.require(:bioterio).permit(:local, :unidade, :idcuica, :nivelsanitario, :mta, :responsavel, :telcontato, :emailcontato)
+      params.require(:bioterio).permit(:local, :unidade, :idcuica, :nivelsanitario, :mta, :responsavel, :telcontato, :emailcontato, :usuario_id)
     end
 end

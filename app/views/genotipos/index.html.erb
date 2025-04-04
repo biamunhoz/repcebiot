@@ -30,6 +30,7 @@
   <thead>
     <tr>
       <th>Nome</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -40,6 +41,7 @@
     <% @genotipos.each do |genotipo| %>
       <tr>
         <td><%= genotipo.nome %></td>
+        <td><%= genotipo.usuario.nomeUsuario %></td>
         <td><%= link_to 'Mostrar', genotipo, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
 		<td><%= link_to 'Editar', edit_genotipo_path(genotipo), class: 'btn btn-warning' %></td>
@@ -55,6 +57,6 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-	<%= link_to 'Novo Genótipo', new_genotipo_path , class: 'btn btn-info'%>
-<% end %>
+
+<%= link_to 'Novo Genótipo', new_genotipo_path , class: 'btn btn-info'%>
+

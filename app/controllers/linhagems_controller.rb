@@ -34,11 +34,13 @@ class LinhagemsController < ApplicationController
   # POST /linhagems or /linhagems.json
   def create
     @linhagem = Linhagem.new(linhagem_params)
+    @linhagem.usuario_id =  current_user.id
+    @linhagem.status = "Novo"
 
     respond_to do |format|
       if @linhagem.save
         addlog("Adicionar linhagem #{@linhagem.id}", "Linhagem")
-        format.html { redirect_to @linhagem, notice: "Linhagem foi criada com sucesso." }
+        format.html { redirect_to linhagems_url(atual: "ativo"), notice: "Linhagem foi criada com sucesso." }
         format.json { render :show, status: :created, location: @linhagem }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,10 +51,18 @@ class LinhagemsController < ApplicationController
 
   # PATCH/PUT /linhagems/1 or /linhagems/1.json
   def update
+
     respond_to do |format|
       if @linhagem.update(linhagem_params)
+        
+        if @linhagem.status == "Recusado"
+          @linhagem.habilitado = false
+        end 
+        @linhagem.save
+
         addlog("Editar linhagem #{@linhagem.id}", "Linhagem")
-        format.html { redirect_to @linhagem, notice: "Linhagem foi atualizada com sucesso." }
+        #format.html { redirect_to @linhagem, notice: "Linhagem foi atualizada com sucesso." }
+        format.html { redirect_to linhagems_url(atual: "ativo"), notice: "Linhagem foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @linhagem }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,7 +80,7 @@ class LinhagemsController < ApplicationController
     if @linhagem.save
       addlog("Desabilitada linhagem #{@linhagem.id}", "Linhagem")
       respond_to do |format|
-        format.html { redirect_to linhagems_url, notice: "Linhagem foi desabilitada para acesso dos usuários com sucesso." }
+        format.html { redirect_to linhagems_url(atual: "inativo"), notice: "Linhagem foi desabilitada para acesso dos usuários com sucesso." }
         format.json { head :no_content }    
       end
     else
@@ -90,7 +100,7 @@ class LinhagemsController < ApplicationController
 
     if @linhagem.save
       respond_to do |format|
-        format.html { redirect_to linhagems_url, notice: "Linhagem foi habilita para acesso dos usuários com sucesso." }
+        format.html { redirect_to linhagems_url(atual: "ativo"), notice: "Linhagem foi habilita para acesso dos usuários com sucesso." }
         format.json { head :no_content }    
       end
     else
@@ -145,6 +155,6 @@ class LinhagemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def linhagem_params
-      params.require(:linhagem).permit(:nome, :anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :genealvo_id, :nivelsanitario, :mta, :fenotipo, :especie, linfundos_attributes:[:id, :linhagem_id, :fundo_id, :_destroy], linprimers_attributes:[:id, :primer_id, :linhagem_id, :_destroy])
+      params.require(:linhagem).permit(:nome, :anoiniciocolonia, :metodoacasalamento, :linkrefconstr, :nivelseguranca, :cqb, :genotipo_id, :bioterio_id, :origem_id, :genealvo_id, :nivelsanitario, :mta, :fenotipo, :especie, :usuario_id, :status, linfundos_attributes:[:id, :linhagem_id, :fundo_id, :_destroy], linprimers_attributes:[:id, :primer_id, :linhagem_id, :_destroy])
     end
 end

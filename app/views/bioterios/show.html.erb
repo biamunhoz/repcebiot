@@ -38,6 +38,11 @@
   <%= @bioterio.emailcontato %>
 </p>
 
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @bioterio.usuario.nomeUsuario %>
+</p>
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_bioterio_path(@bioterio), class: 'btn btn-warning' %> 
 <% end %>

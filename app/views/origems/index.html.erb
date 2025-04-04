@@ -33,6 +33,7 @@
       <th>Sigla</th>
       <th>Endereço</th>
       <th>Observação</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -46,6 +47,7 @@
         <td><%= origem.sigla %></td>
         <td><%= origem.endereco %></td>
         <td><%= origem.observacao %></td>
+        <td><%= origem.usuario.nomeUsuario %></td>
         <td><%= link_to 'Mostrar', origem, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
           <td><%= link_to 'Editar', edit_origem_path(origem), class: 'btn btn-warning' %></td>
@@ -61,6 +63,6 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Nova Origem', new_origem_path, class: 'btn btn-info' %>
-<% end %>
+
+<%= link_to 'Nova Origem', new_origem_path, class: 'btn btn-info' %>
+

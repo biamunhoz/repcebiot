@@ -27,9 +27,9 @@
 
 <h3>Linhagens</h3>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
-<% end %>
+
+<%= link_to 'Nova Linhagem', new_linhagem_path, class: 'btn btn-info' %>
+
 
 <br>
 <br>
@@ -46,8 +46,11 @@
     <tr>
       <th>Nome</th>
       <th>Biotério</th>
+      <th>Cadastrado por</th>
       <th>Ativo/Inativo</th>
-      <th>Ranking <th>
+      <th>Ranking </th>
+      <th>Status</th>
+      <th></th>
       <th></th>
       <th></th>
       <th>Classificar</th>
@@ -59,6 +62,7 @@
       <tr>
         <td><%= linhagem.nome %></td>
         <td><%= linhagem.bioterio.full_bioterio %> </td>
+        <td><%= linhagem.usuario.nomeUsuario %></td>
         <td><%= linhagem.habilitado == true ? "Ativo" : "Inativo" %></td>
         <% if linhagem.classificacao == "ouro" %>
           <td> <%= image_tag("ouro.jpg", border: 0, height: 40, width: 40) %></td>
@@ -69,6 +73,7 @@
         <% else %>
           <td>Sem classificação </td>
         <% end %>
+        <td><%= linhagem.status %></td>
         <td><%= link_to 'Mostrar', linhagem, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
         	<td><%= link_to 'Editar', edit_linhagem_path(linhagem), class: 'btn btn-warning' %></td>

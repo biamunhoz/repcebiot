@@ -33,6 +33,7 @@
       <th>Símbolo</th>
       <th>Site/Local de referência</th>
       <th>Gene secundário</th>
+      <th>Cadastrado por</th>
       <th></th>
       <th></th>
       <th></th>
@@ -46,6 +47,7 @@
         <td><%= genealvo.simbolo %></td>
         <td><%= genealvo.sitereferencia %></td>
         <td><%= link_to 'Gene secundário', genesecundarios_path(:idalvo => genealvo.id), class: "btn btn-default" %></td>
+        <td><%= genealvo.usuario.nomeUsuario %></td>
         <td><%= link_to 'Mostrar', genealvo, class: 'btn btn-info' %></td>
         <% if session[:perfil] == "Administrador" %>
           <td><%= link_to 'Editar', edit_genealvo_path(genealvo), class: 'btn btn-warning' %></td>
@@ -61,6 +63,5 @@
 
 <br>
 
-<% if session[:perfil] == "Administrador" %>
-  <%= link_to 'Novo Gene Alvo', new_genealvo_path, class: 'btn btn-info' %>
-<% end %>
+
+<%= link_to 'Novo Gene Alvo', new_genealvo_path, class: 'btn btn-info' %>

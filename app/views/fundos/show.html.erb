@@ -5,6 +5,11 @@
   <%= @fundo.nome %>
 </p>
 
+<p>
+  <strong>Cadastrado por: </strong>
+  <%= @fundo.usuario.nomeUsuario %>
+</p>
+
 <% if session[:perfil] == "Administrador" %>
   <%= link_to 'Editar', edit_fundo_path(@fundo), class: 'btn btn-warning' %> 
 <% end %>

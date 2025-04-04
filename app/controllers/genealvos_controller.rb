@@ -23,6 +23,7 @@ class GenealvosController < ApplicationController
   # POST /genealvos or /genealvos.json
   def create
     @genealvo = Genealvo.new(genealvo_params)
+    @genealvo.usuario_id =  current_user.id
 
     respond_to do |format|
       if @genealvo.save

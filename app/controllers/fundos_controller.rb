@@ -24,6 +24,8 @@ class FundosController < ApplicationController
   def create
     @fundo = Fundo.new(fundo_params)
 
+    @fundo.usuario_id =  current_user.id
+
     respond_to do |format|
       if @fundo.save
         addlog("Adicionar fundo #{@fundo.id}", "Fundo")
@@ -68,6 +70,6 @@ class FundosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fundo_params
-      params.require(:fundo).permit(:nome)
+      params.require(:fundo).permit(:nome, :usuario_id)
     end
 end
